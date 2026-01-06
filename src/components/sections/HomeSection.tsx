@@ -18,7 +18,7 @@ const HomeSection: React.FC = () => {
     >
       {/* Background noise */}
       <div className="absolute inset-0 noise" />
-      
+
       {/* Grid pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="w-full h-full" style={{
@@ -48,9 +48,10 @@ const HomeSection: React.FC = () => {
             </motion.div>
 
             <h1 className="font-heading text-5xl md:text-7xl font-bold mb-4">
-              <span className="text-foreground">Syed Hamza</span>
+              <span className="text-foreground">Syed</span>
+              <span className="text-accent text-glow"> Hamza</span>
               <br />
-              <span className="text-accent text-glow">Imran</span>
+              <span className="text-foreground">Imran</span>
             </h1>
 
             <motion.p
@@ -69,7 +70,7 @@ const HomeSection: React.FC = () => {
               transition={{ delay: 0.9 }}
               className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-8"
             >
-              Crafting digital experiences with clean code and creative solutions. 
+              Crafting digital experiences with clean code and creative solutions.
               Turning complex problems into elegant, user-friendly applications.
             </motion.p>
 
@@ -105,11 +106,13 @@ const HomeSection: React.FC = () => {
             <div className="relative">
               {/* Glow background */}
               <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full" />
-              
+
               {/* Image container */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden halftone glass-card">
                 <div className="w-full h-full bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center">
-                  <span className="text-8xl font-heading font-bold text-accent/30">SHI</span>
+                  <span className="text-8xl font-heading font-bold text-accent/30">
+                    <img src="img/Me.jpeg" alt="Syed Hamza Imran" />
+                  </span>
                 </div>
               </div>
 

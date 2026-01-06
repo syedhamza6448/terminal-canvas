@@ -7,16 +7,16 @@ const asciiArt = `
   ║  $ whoami                            ║
   ║  > syed_hamza_imran                  ║
   ║                                      ║
-  ║  $ cat skills.txt                    ║
+  ║  $ tech skills.txt                   ║
   ║  > React, TypeScript, Node.js        ║
-  ║  > Python, PostgreSQL, AWS           ║
+  ║  > Laravel, ASP.Net Core, Next.js    ║
   ║  > UI/UX Design, System Design       ║
   ║                                      ║
   ║  $ echo $PASSION                     ║
   ║  > "Building things that matter"     ║
   ║                                      ║
   ║  $ uptime                            ║
-  ║  > 5+ years in development           ║
+  ║  > 2+ years in development           ║
   ╚══════════════════════════════════════╝
 `;
 

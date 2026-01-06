@@ -1,7 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
+import TypingAnimation from '../TypingAnimation';
 
+const developerRoles = [
+  'Full-Stack Developer',
+  'React Specialist',
+  'UI/UX Enthusiast',
+  'Problem Solver',
+  'Code Craftsman',
+];
 const HomeSection: React.FC = () => {
   return (
     <section
@@ -51,8 +59,8 @@ const HomeSection: React.FC = () => {
               transition={{ delay: 0.7 }}
               className="text-xl md:text-2xl text-muted-foreground font-mono mb-8"
             >
-              <span className="text-accent">{'>'}</span> Full-Stack Developer
-              <span className="typing-cursor" />
+              <span className="text-accent">{'>'}</span>{' '}
+              <TypingAnimation roles={developerRoles} />
             </motion.p>
 
             <motion.p

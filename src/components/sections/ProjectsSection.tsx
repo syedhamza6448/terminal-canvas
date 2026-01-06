@@ -143,7 +143,7 @@ const ProjectsSection: React.FC = () => {
           className="mb-12"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-accent">02.</span> Projects
+            <span className="text-accent">03.</span> Projects
           </h2>
           <div className="w-24 h-1 bg-accent" />
         </motion.div>

@@ -1,21 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import InteractiveAlien from '../InteractiveAlien';
+import PixelAlien from '../PixelAlien';
+import { 
+  SiReact, 
+  SiTypescript, 
+  SiNextdotjs, 
+  SiTailwindcss, 
+  SiNodedotjs, 
+  SiLaravel, 
+  SiDotnet, 
+  SiPostgresql, 
+  SiMongodb, 
+  SiDocker, 
+  SiGit, 
+  SiFigma 
+} from 'react-icons/si';
 
 const techStacks = [
-  { name: 'React', category: 'frontend' },
-  { name: 'TypeScript', category: 'frontend' },
-  { name: 'Next.js', category: 'frontend' },
-  { name: 'Tailwind CSS', category: 'frontend' },
-  { name: 'Node.js', category: 'backend' },
-  { name: 'Laravel', category: 'backend' },
-  { name: 'ASP.NET Core', category: 'backend' },
-  { name: 'PostgreSQL', category: 'database' },
-  { name: 'MongoDB', category: 'database' },
-  { name: 'Docker', category: 'devops' },
-  { name: 'Git', category: 'devops' },
-  { name: 'Figma', category: 'design' },
+  { name: 'React', category: 'frontend', icon: SiReact },
+  { name: 'TypeScript', category: 'frontend', icon: SiTypescript },
+  { name: 'Next.js', category: 'frontend', icon: SiNextdotjs },
+  { name: 'Tailwind CSS', category: 'frontend', icon: SiTailwindcss },
+  { name: 'Node.js', category: 'backend', icon: SiNodedotjs },
+  { name: 'Laravel', category: 'backend', icon: SiLaravel },
+  { name: 'ASP.NET Core', category: 'backend', icon: SiDotnet },
+  { name: 'PostgreSQL', category: 'database', icon: SiPostgresql },
+  { name: 'MongoDB', category: 'database', icon: SiMongodb },
+  { name: 'Docker', category: 'devops', icon: SiDocker },
+  { name: 'Git', category: 'devops', icon: SiGit },
+  { name: 'Figma', category: 'design', icon: SiFigma },
 ];
 
 const AboutSection: React.FC = () => {
@@ -56,7 +70,7 @@ const AboutSection: React.FC = () => {
                 </span>
               </div>
               <div className="p-6 bg-terminal scanlines relative h-[300px] md:h-[350px]">
-                <InteractiveAlien />
+                <PixelAlien />
               </div>
             </div>
           </motion.div>
@@ -90,19 +104,23 @@ const AboutSection: React.FC = () => {
             <div className="pt-4">
               <h3 className="text-sm font-mono text-accent mb-3">$ ls tech-stack/</h3>
               <div className="flex flex-wrap gap-2">
-                {techStacks.map((tech, index) => (
-                  <motion.span
-                    key={tech.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05 }}
-                    className="px-3 py-1 text-xs font-mono bg-accent/10 text-accent border border-accent/30 rounded hover:bg-accent/20 transition-colors cursor-default"
-                  >
-                    {tech.name}
-                  </motion.span>
-                ))}
+                {techStacks.map((tech, index) => {
+                  const IconComponent = tech.icon;
+                  return (
+                    <motion.span
+                      key={tech.name}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05 }}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono bg-accent/10 text-accent border border-accent/30 rounded hover:bg-accent/20 transition-colors cursor-default"
+                    >
+                      <IconComponent className="w-4 h-4" />
+                      {tech.name}
+                    </motion.span>
+                  );
+                })}
               </div>
             </div>
 

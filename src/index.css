@@ -262,16 +262,27 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: radial-gradient(circle, hsl(var(--accent)) 1px, transparent 1px);
-    background-size: 4px 4px;
+    background-image: radial-gradient(circle, hsl(var(--accent)) 2px, transparent 2px);
+    background-size: 6px 6px;
     mix-blend-mode: multiply;
-    opacity: 0.4;
+    opacity: 0.7;
     pointer-events: none;
   }
 
   .dark .halftone::after {
     mix-blend-mode: screen;
-    opacity: 0.3;
+    opacity: 0.6;
+  }
+
+  /* Selection styling with accent color */
+  ::selection {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  ::-moz-selection {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
   }
 
   /* Status indicator */

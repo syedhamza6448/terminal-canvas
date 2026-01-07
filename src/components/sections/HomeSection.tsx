@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import TypingAnimation from '../TypingAnimation';
+import { Slider } from '../ui/slider';
 
 const developerRoles = [
   'Full-Stack Developer',
@@ -10,7 +11,15 @@ const developerRoles = [
   'Problem Solver',
   'Code Craftsman',
 ];
+
 const HomeSection: React.FC = () => {
+  const [halftoneIntensity, setHalftoneIntensity] = useState(70);
+
+  // Calculate halftone CSS values based on intensity (0-100)
+  const dotSize = 1 + (halftoneIntensity / 100) * 3; // 1px to 4px
+  const gridSize = 4 + (halftoneIntensity / 100) * 4; // 4px to 8px
+  const opacity = 0.2 + (halftoneIntensity / 100) * 0.6; // 0.2 to 0.8
+
   return (
     <section
       id="home"
@@ -101,25 +110,65 @@ const HomeSection: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex-1 flex justify-center lg:justify-end"
+            className="flex-1 flex flex-col items-center lg:items-end gap-6"
           >
             <div className="relative">
               {/* Glow background */}
               <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full" />
 
-              {/* Image container */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden halftone glass-card">
+              {/* Image container with dynamic halftone */}
+              <div 
+                className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden glass-card"
+                style={{
+                  '--halftone-dot-size': `${dotSize}px`,
+                  '--halftone-grid-size': `${gridSize}px`,
+                  '--halftone-opacity': opacity,
+                } as React.CSSProperties}
+              >
                 <div className="w-full h-full bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center">
-                  <span className="text-8xl font-heading font-bold text-accent/30">
-                    <img src="img/Me.jpeg" alt="Syed Hamza Imran" />
-                  </span>
+                  <img 
+                    src="img/Me.jpeg" 
+                    alt="Syed Hamza Imran" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+                {/* Dynamic halftone overlay */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundImage: `radial-gradient(circle, hsl(var(--accent)) ${dotSize}px, transparent ${dotSize}px)`,
+                    backgroundSize: `${gridSize}px ${gridSize}px`,
+                    mixBlendMode: 'screen',
+                    opacity: opacity,
+                  }}
+                />
               </div>
 
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-accent" />
               <div className="absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-accent" />
             </div>
+
+            {/* Halftone Intensity Slider */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.3 }}
+              className="w-64 md:w-80 space-y-2"
+            >
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-mono text-muted-foreground">halftone_intensity:</span>
+                <span className="text-xs font-mono text-accent">{halftoneIntensity}%</span>
+              </div>
+              <Slider
+                value={[halftoneIntensity]}
+                onValueChange={(value) => setHalftoneIntensity(value[0])}
+                min={0}
+                max={100}
+                step={1}
+                className="w-full"
+              />
+            </motion.div>
           </motion.div>
         </div>
 

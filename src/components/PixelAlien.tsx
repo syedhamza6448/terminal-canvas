@@ -1,9 +1,20 @@
-import React, { useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useRef, useState, useCallback } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  angle: number;
+  speed: number;
+  size: number;
+}
 
 const PixelAlien: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [clickCount, setClickCount] = useState(0);
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -15,7 +26,7 @@ const PixelAlien: React.FC = () => {
   const rotateX = useTransform(y, [-100, 100], [15, -15]);
   const rotateY = useTransform(x, [-100, 100], [-15, 15]);
 
-  // Pixel art pattern for space invader alien (16x12 grid)
+  // Pixel art pattern for space invader alien (16x8 grid)
   const alienPattern = [
     [0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0],
     [0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0],
@@ -44,6 +55,37 @@ const PixelAlien: React.FC = () => {
     setIsHovering(false);
   };
 
+  const createExplosion = useCallback((e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+    
+    // Create 12-20 particles
+    const particleCount = 12 + Math.floor(Math.random() * 8);
+    const newParticles: Particle[] = [];
+    
+    for (let i = 0; i < particleCount; i++) {
+      newParticles.push({
+        id: Date.now() + i,
+        x: clickX,
+        y: clickY,
+        angle: (Math.PI * 2 * i) / particleCount + Math.random() * 0.5,
+        speed: 50 + Math.random() * 100,
+        size: 4 + Math.random() * 8,
+      });
+    }
+    
+    setParticles(prev => [...prev, ...newParticles]);
+    setClickCount(prev => prev + 1);
+    
+    // Remove particles after animation
+    setTimeout(() => {
+      setParticles(prev => prev.filter(p => !newParticles.find(np => np.id === p.id)));
+    }, 800);
+  }, []);
+
   const pixelSize = 12;
 
   return (
@@ -53,7 +95,42 @@ const PixelAlien: React.FC = () => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
+      onClick={createExplosion}
     >
+      {/* Explosion particles */}
+      <AnimatePresence>
+        {particles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute bg-accent pointer-events-none"
+            style={{
+              left: particle.x,
+              top: particle.y,
+              width: particle.size,
+              height: particle.size,
+              boxShadow: '0 0 10px hsl(var(--accent) / 0.8)',
+            }}
+            initial={{ 
+              scale: 1, 
+              opacity: 1,
+              x: 0,
+              y: 0,
+            }}
+            animate={{ 
+              scale: 0,
+              opacity: 0,
+              x: Math.cos(particle.angle) * particle.speed,
+              y: Math.sin(particle.angle) * particle.speed,
+            }}
+            exit={{ opacity: 0 }}
+            transition={{ 
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+          />
+        ))}
+      </AnimatePresence>
+
       <motion.div
         className="relative"
         style={{
@@ -63,11 +140,17 @@ const PixelAlien: React.FC = () => {
         }}
         animate={{
           y: [0, -10, 0],
+          scale: clickCount > 0 ? [1, 1.1, 1] : 1,
         }}
         transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
+          y: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          },
+          scale: {
+            duration: 0.3,
+          }
         }}
       >
         {/* Glow effect behind alien */}
@@ -88,11 +171,12 @@ const PixelAlien: React.FC = () => {
         />
 
         {/* Pixel Grid Alien */}
-        <div 
+        <motion.div 
           className="relative grid gap-0.5"
           style={{
             gridTemplateColumns: `repeat(16, ${pixelSize}px)`,
           }}
+          whileTap={{ scale: 0.95 }}
         >
           {alienPattern.map((row, rowIndex) =>
             row.map((pixel, colIndex) => (
@@ -120,7 +204,7 @@ const PixelAlien: React.FC = () => {
               />
             ))
           )}
-        </div>
+        </motion.div>
 
         {/* Floating particles */}
         {[...Array(8)].map((_, i) => (
@@ -177,7 +261,7 @@ const PixelAlien: React.FC = () => {
           repeat: Infinity,
         }}
       >
-        {'>'} hover to interact_
+        {'>'} click for explosion_
       </motion.div>
     </div>
   );

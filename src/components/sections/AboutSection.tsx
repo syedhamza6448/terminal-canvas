@@ -1,24 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import InteractiveAlien from '../InteractiveAlien';
 
-const asciiArt = `
-  ╔══════════════════════════════════════╗
-  ║  $ whoami                            ║
-  ║  > syed_hamza_imran                  ║
-  ║                                      ║
-  ║  $ tech skills.txt                   ║
-  ║  > React, TypeScript, Node.js        ║
-  ║  > Laravel, ASP.Net Core, Next.js    ║
-  ║  > UI/UX Design, System Design       ║
-  ║                                      ║
-  ║  $ echo $PASSION                     ║
-  ║  > "Building things that matter"     ║
-  ║                                      ║
-  ║  $ uptime                            ║
-  ║  > 2+ years in development           ║
-  ╚══════════════════════════════════════╝
-`;
+const techStacks = [
+  { name: 'React', category: 'frontend' },
+  { name: 'TypeScript', category: 'frontend' },
+  { name: 'Next.js', category: 'frontend' },
+  { name: 'Tailwind CSS', category: 'frontend' },
+  { name: 'Node.js', category: 'backend' },
+  { name: 'Laravel', category: 'backend' },
+  { name: 'ASP.NET Core', category: 'backend' },
+  { name: 'PostgreSQL', category: 'database' },
+  { name: 'MongoDB', category: 'database' },
+  { name: 'Docker', category: 'devops' },
+  { name: 'Git', category: 'devops' },
+  { name: 'Figma', category: 'design' },
+];
 
 const AboutSection: React.FC = () => {
   return (
@@ -54,17 +52,11 @@ const AboutSection: React.FC = () => {
                 <div className="terminal-dot bg-yellow-500" />
                 <div className="terminal-dot bg-green-500" />
                 <span className="ml-4 text-xs text-muted-foreground font-mono">
-                  ~/about/hamza.sh
+                  ~/about/alien.exe
                 </span>
               </div>
-              <div className="p-6 bg-terminal scanlines relative">
-                <pre className="text-xs md:text-sm font-mono text-accent whitespace-pre overflow-x-auto">
-                  {asciiArt}
-                </pre>
-                <div className="mt-4 flex items-center gap-2">
-                  <span className="text-accent">$</span>
-                  <span className="text-muted-foreground typing-cursor">_</span>
-                </div>
+              <div className="p-6 bg-terminal scanlines relative h-[300px] md:h-[350px]">
+                <InteractiveAlien />
               </div>
             </div>
           </motion.div>
@@ -93,6 +85,26 @@ const AboutSection: React.FC = () => {
               When I'm not coding, you'll find me exploring new technologies, contributing to 
               open-source projects, or sharing knowledge with the developer community.
             </p>
+
+            {/* Tech Stack */}
+            <div className="pt-4">
+              <h3 className="text-sm font-mono text-accent mb-3">$ ls tech-stack/</h3>
+              <div className="flex flex-wrap gap-2">
+                {techStacks.map((tech, index) => (
+                  <motion.span
+                    key={tech.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05 }}
+                    className="px-3 py-1 text-xs font-mono bg-accent/10 text-accent border border-accent/30 rounded hover:bg-accent/20 transition-colors cursor-default"
+                  >
+                    {tech.name}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
 
             <div className="pt-6">
               <a

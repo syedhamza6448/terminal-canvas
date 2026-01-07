@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
               whileHover={{ scale: 1.05 }}
             >
               <Terminal className="w-6 h-6" />
-              <span className="hidden sm:inline">SHI</span>
+              <span className="hidden sm:inline"><em>SHI</em></span>
             </motion.a>
 
             {/* Center Navigation - Desktop */}

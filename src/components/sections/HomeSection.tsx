@@ -10,15 +10,15 @@ const developerRoles = [
   'UI/UX Enthusiast',
   'Problem Solver',
   'Code Craftsman',
+  'Make everything works!',
 ];
 
 const HomeSection: React.FC = () => {
   const [halftoneIntensity, setHalftoneIntensity] = useState(70);
 
-  // Calculate halftone CSS values based on intensity (0-100)
-  const dotSize = 1 + (halftoneIntensity / 100) * 3; // 1px to 4px
-  const gridSize = 4 + (halftoneIntensity / 100) * 4; // 4px to 8px
-  const opacity = 0.2 + (halftoneIntensity / 100) * 0.6; // 0.2 to 0.8
+  const dotSize = 1 + (halftoneIntensity / 100) * 3;
+  const gridSize = 4 + (halftoneIntensity / 100) * 4;
+  const opacity = 0.2 + (halftoneIntensity / 100) * 0.6;
 
   return (
     <section

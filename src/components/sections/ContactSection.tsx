@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Github, Linkedin, Twitter, Mail, ArrowUpRight } from 'lucide-react';
+import { Send, Github, Linkedin, Instagram, Mail, ArrowUpRight } from 'lucide-react';
 
 interface SocialLink {
   name: string;
@@ -12,27 +12,27 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   {
     name: 'GitHub',
-    username: '@syedhamzaimran',
+    username: '@syedhamza6448',
     icon: Github,
-    href: 'https://github.com',
+    href: 'https://github.com/syedhamza6448',
   },
   {
     name: 'LinkedIn',
-    username: '/in/syedhamzaimran',
+    username: '/in/syedhamza6448',
     icon: Linkedin,
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/syedhamza6448/',
   },
   {
-    name: 'Twitter',
-    username: '@syedhamzaimran',
-    icon: Twitter,
-    href: 'https://twitter.com',
+    name: 'Instagram',
+    username: '@s.yedhamza',
+    icon: Instagram,
+    href: 'https://www.instagram.com/s.yedhamza/',
   },
   {
     name: 'Email',
-    username: 'hello@hamza.dev',
+    username: 'hsyed6448@gmail.com',
     icon: Mail,
-    href: 'mailto:hello@hamza.dev',
+    href: 'mailto:hsyed6448@gmail.com',
   },
 ];
 

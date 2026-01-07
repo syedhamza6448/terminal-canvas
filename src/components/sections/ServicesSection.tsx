@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Palette, Server, Smartphone, Zap, Database } from 'lucide-react';
+import { Code, Palette, Server, Smartphone, Zap, Database, Plug, PlugZap, Plug2 } from 'lucide-react';
 
 interface Service {
   id: number;
@@ -34,17 +34,17 @@ const services: Service[] = [
   },
   {
     id: 4,
-    title: 'Mobile Development',
-    description: 'Creating cross-platform mobile applications with native-like performance.',
-    icon: Smartphone,
-    features: ['React Native', 'Expo', 'iOS / Android', 'App Store Deploy'],
+    title: 'API Development & Integrations',
+    description: 'Designing and integrating secure, scalable APIs to connect systems and services seamlessly.',
+    icon: Plug2,
+    features: ['Rest APIs', 'GraphQL', 'Third-party Integrations', 'Auth', 'Webhooks'],
   },
   {
     id: 5,
     title: 'Database Design',
     description: 'Architecting efficient data models and optimizing query performance.',
     icon: Database,
-    features: ['PostgreSQL', 'MongoDB', 'Redis', 'Data Modeling'],
+    features: ['MySQL', 'MongoDB', 'MS-SQL', 'Data Modeling'],
   },
   {
     id: 6,

@@ -12,46 +12,13 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: 1,
-    company: 'Tech Innovations Inc.',
-    role: 'Senior Full-Stack Developer',
-    duration: '01-2023 - Present',
+    company: 'Mini Solutions',
+    role: 'Senior Full-Stack Engineer',
+    duration: '12-2024 - Present',
     description: [
-      'Led development of microservices architecture serving 1M+ users',
-      'Mentored junior developers and established coding standards',
-      'Implemented CI/CD pipelines reducing deployment time by 60%',
-    ],
-  },
-  {
-    id: 2,
-    company: 'Digital Solutions Ltd.',
-    role: 'Full-Stack Developer',
-    duration: '06-2021 - 12-2022',
-    description: [
-      'Built responsive web applications using React and Node.js',
-      'Optimized database queries improving performance by 40%',
-      'Collaborated with design team to implement pixel-perfect UIs',
-    ],
-  },
-  {
-    id: 3,
-    company: 'StartUp Hub',
-    role: 'Frontend Developer',
-    duration: '01-2020 - 05-2021',
-    description: [
-      'Developed interactive dashboards with real-time data visualization',
-      'Implemented state management using Redux and Context API',
-      'Created reusable component library used across multiple projects',
-    ],
-  },
-  {
-    id: 4,
-    company: 'Freelance',
-    role: 'Web Developer',
-    duration: '06-2019 - 12-2019',
-    description: [
-      'Delivered 10+ client projects ranging from portfolios to e-commerce',
-      'Managed full project lifecycle from requirements to deployment',
-      'Built lasting client relationships through quality deliverables',
+      'Built robust frontend and backend architectures.',
+      'Led end-to-end development of scalable web applications.',
+      'Mentored junior developers and established coding standards.',
     ],
   },
 ];

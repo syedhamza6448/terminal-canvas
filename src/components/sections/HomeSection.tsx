@@ -127,7 +127,7 @@ const HomeSection: React.FC = () => {
               >
                 <div className="w-full h-full bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center">
                   <img 
-                    src="img/Me.jpeg" 
+                    src="img/Me-bg.png" 
                     alt="Syed Hamza Imran" 
                     className="w-full h-full object-cover"
                   />

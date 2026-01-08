@@ -1,6 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Github, Linkedin, Instagram, Mail, ArrowUpRight } from 'lucide-react';
+import { Send, Github, Linkedin, Instagram, Mail, ArrowUpRight, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
 
 interface SocialLink {
   name: string;
@@ -36,12 +39,21 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters"),
+});
+
 const ContactSection: React.FC = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const isPowered = useMemo(() => {
     return formData.name.trim() !== '' && 
@@ -54,12 +66,55 @@ const ContactSection: React.FC = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    // Reset status when user starts typing again
+    if (submitStatus !== 'idle') {
+      setSubmitStatus('idle');
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    
+    // Validate input
+    const validation = contactSchema.safeParse(formData);
+    if (!validation.success) {
+      toast({
+        title: "Validation Error",
+        description: validation.error.errors[0].message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      setSubmitStatus('success');
+      toast({
+        title: "Message sent! ✨",
+        description: "Thanks for reaching out! I'll get back to you soon.",
+      });
+      
+      // Reset form
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      setSubmitStatus('error');
+      toast({
+        title: "Failed to send message",
+        description: "Something went wrong. Please try again or email me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -113,6 +168,7 @@ const ContactSection: React.FC = () => {
                   className="form-input w-full terminal-input bg-transparent text-foreground"
                   placeholder="Your name"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -129,6 +185,7 @@ const ContactSection: React.FC = () => {
                   className="form-input w-full terminal-input bg-transparent text-foreground"
                   placeholder="your@email.com"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -145,22 +202,46 @@ const ContactSection: React.FC = () => {
                   className="form-input w-full terminal-input bg-transparent text-foreground resize-none"
                   placeholder="What would you like to discuss?"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 className={`w-full py-4 rounded-lg font-mono flex items-center justify-center gap-2 transition-all duration-500 ${
-                  isPowered 
-                    ? 'bg-accent text-accent-foreground accent-glow' 
-                    : 'bg-muted text-muted-foreground'
+                  submitStatus === 'success'
+                    ? 'bg-green-500 text-white'
+                    : submitStatus === 'error'
+                    ? 'bg-red-500 text-white'
+                    : isPowered 
+                      ? 'bg-accent text-accent-foreground accent-glow' 
+                      : 'bg-muted text-muted-foreground'
                 }`}
-                disabled={!isPowered}
+                disabled={!isPowered || isSubmitting}
               >
-                <Send className="w-4 h-4" />
-                <span>{isPowered ? 'Send Message' : 'Complete form to send'}</span>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Sending...</span>
+                  </>
+                ) : submitStatus === 'success' ? (
+                  <>
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Message Sent!</span>
+                  </>
+                ) : submitStatus === 'error' ? (
+                  <>
+                    <AlertCircle className="w-4 h-4" />
+                    <span>Try Again</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    <span>{isPowered ? 'Send Message' : 'Complete form to send'}</span>
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>
@@ -204,24 +285,6 @@ const ContactSection: React.FC = () => {
             ))}
           </motion.div>
         </div>
-
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-24 pt-8 border-t border-border text-center"
-        >
-          <p className="text-muted-foreground font-mono text-sm">
-            <span className="text-accent">{'<'}</span>
-            Designed & Built by Syed Hamza Imran
-            <span className="text-accent">{' />'}</span>
-          </p>
-          <p className="text-muted-foreground/60 font-mono text-xs mt-2">
-            © {new Date().getFullYear()} All rights reserved.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

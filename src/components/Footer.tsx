@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, Mail, Heart, Coffee, Code, Terminal } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Heart, Coffee, Code, Terminal, Gamepad2, FileCode, Sparkles } from 'lucide-react';
+import TerminalGame from './TerminalGame';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com/syedhamza6448', label: 'GitHub' },
@@ -18,9 +19,65 @@ const codeSnippets = [
   'console.log("Built with ❤️ and lots of ☕");',
 ];
 
+type AsciiTab = 'rocket' | 'code' | 'coffee' | 'game';
+
+const asciiArt: Record<Exclude<AsciiTab, 'game'>, string> = {
+  rocket: `
+       /\\
+      /  \\
+     /    \\
+    |  SH  |
+    |      |
+   /|      |\\
+  / |      | \\
+ /  |      |  \\
+/___|______|___\\
+    |  ||  |
+    |  ||  |
+   /|  ||  |\\
+  /_|__||__|_\\
+     /__\\
+    /____\\
+   🔥🔥🔥
+  `,
+  code: `
+    _____
+   /     \\
+  |  < >  |
+  | CODE  |
+  |  IS   |
+  | POETRY|
+   \\_____/
+      |
+   ___|___
+  |       |
+  | PUSH  |
+  |_______|
+  `,
+  coffee: `
+      )  (
+     (   ) )
+      ) ( (
+    _______)_
+ .-'---------|  
+( C|/\\/\\/\\/\\/|
+ '-./\\/\\/\\/\\/|
+   '_________'
+    '-------'
+  `,
+};
+
+const tabIcons: { id: AsciiTab; icon: React.ElementType; label: string }[] = [
+  { id: 'rocket', icon: Sparkles, label: 'Rocket' },
+  { id: 'code', icon: FileCode, label: 'Code' },
+  { id: 'coffee', icon: Coffee, label: 'Coffee' },
+  { id: 'game', icon: Gamepad2, label: 'Snake' },
+];
+
 const Footer: React.FC = () => {
   const [currentSnippet, setCurrentSnippet] = useState(0);
   const [coffeeCount, setCoffeeCount] = useState(0);
+  const [activeAsciiTab, setActiveAsciiTab] = useState<AsciiTab>('rocket');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -171,6 +228,61 @@ const Footer: React.FC = () => {
           </motion.div>
         </div>
 
+        {/* ASCII Art Terminal with Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="glass-card max-w-md mx-auto mb-12 overflow-hidden"
+        >
+          {/* Terminal Header with Tabs */}
+          <div className="flex items-center justify-between bg-secondary/50 px-3 py-2 border-b border-border">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500" />
+              <div className="w-3 h-3 rounded-full bg-green-500" />
+            </div>
+            
+            {/* Tab Bookmarks */}
+            <div className="flex gap-1">
+              {tabIcons.map((tab) => (
+                <motion.button
+                  key={tab.id}
+                  onClick={() => setActiveAsciiTab(tab.id)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-2 py-1 rounded text-xs font-mono flex items-center gap-1 transition-colors ${
+                    activeAsciiTab === tab.id
+                      ? 'bg-accent text-accent-foreground'
+                      : 'bg-accent/10 text-muted-foreground hover:text-accent'
+                  }`}
+                >
+                  <tab.icon className="w-3 h-3" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                </motion.button>
+              ))}
+            </div>
+          </div>
+
+          {/* Content Area */}
+          <div className="p-4 bg-terminal min-h-[280px] flex items-center justify-center">
+            {activeAsciiTab === 'game' ? (
+              <TerminalGame />
+            ) : (
+              <motion.pre
+                key={activeAsciiTab}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                className="text-accent text-xs font-mono whitespace-pre"
+              >
+                {asciiArt[activeAsciiTab]}
+              </motion.pre>
+            )}
+          </div>
+        </motion.div>
+
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -194,21 +306,6 @@ const Footer: React.FC = () => {
           <p className="text-muted-foreground/60 font-mono text-xs">
             © {new Date().getFullYear()} All rights reserved.
           </p>
-        </motion.div>
-
-        {/* ASCII Art Decoration */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-8 text-center"
-        >
-          <pre className="text-accent/30 text-xs font-mono hidden md:block">
-{`    ╔═══════════════════════════════════════════════════════════╗
-    ║   Thanks for scrolling all the way down! You're awesome!  ║
-    ╚═══════════════════════════════════════════════════════════╝`}
-          </pre>
         </motion.div>
       </div>
     </footer>

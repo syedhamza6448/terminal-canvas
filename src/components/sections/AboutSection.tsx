@@ -44,7 +44,6 @@ const codingStats = [
   { label: 'Frontend', percentage: 90 },
   { label: 'Backend', percentage: 85 },
   { label: 'Database', percentage: 80 },
-  { label: 'DevOps', percentage: 70 },
   { label: 'UI/UX', percentage: 75 },
 ];
 

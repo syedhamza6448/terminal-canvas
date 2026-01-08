@@ -24,7 +24,7 @@ const projects: Project[] = [
     date: '08-2025',
     status: 'completed',
     category: 'full-stack',
-    techStack: ['Blade', 'Laravel', 'MySQL', 'REST APIs'],
+    techStack: ['Blade Template Engine(HTML, CSS, JS)', 'Laravel(PHP)', 'MySQL', 'REST APIs'],
     link: 'https://www.inquizzitive.io',
   },
   {
@@ -39,43 +39,103 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    name: 'Task Management System',
-    description: 'Collaborative project management tool with kanban boards and team analytics.',
-    date: '08-2024',
-    status: 'completed',
-    category: 'full-stack',
-    techStack: ['Next.js', 'Python', 'OpenAI', 'WebSocket'],
-    link: null,
-  },
-  {
-    id: 4,
     name: 'Portfolio v2',
     description: 'Previous iteration of my personal portfolio website.',
     date: '02-2025',
     status: 'completed',
     category: 'frontend',
     techStack: ['HTML', 'CSS', 'JavaScript'],
+    link: 'https://syedhamza6448.github.io/VCard-Portfolio',
+  },
+  {
+    id: 4,
+    name: 'Expense Voyage',
+    description: 'Expense Voyage is a travel planning and expense management web app that lets users create trips, set budgets, and track expenses in real time.',
+    date: '10-2025',
+    status: 'completed',
+    category: 'full-stack',
+    techStack: ['Blade Template Engine(HTML, CSS, JS)', 'Laravel(PHP)', 'Bootstrap', 'MySQL', 'REST APIs'],
     link: null,
   },
   {
     id: 5,
-    name: 'Weather Widget',
-    description: 'A minimalist weather widget with location detection and animated icons.',
-    date: '06-2024',
+    name: 'Event Sphere',
+    description: 'EventSphere is a centralized web-based event management platform that streamlines college events by enabling seamless event creation, registration, tracking, and engagement. It improves communication, boosts participation, and maintains digital records of all events in one place.',
+    date: '10-2025',
     status: 'completed',
-    category: 'mini-projects',
-    techStack: ['React', 'API Integration'],
+    category: 'full-stack',
+    techStack: ['Blade Template Engine(HTML, CSS, JS)', 'Laravel(PHP)', 'Bootstrap', 'MySQL', 'REST APIs'],
     link: null,
   },
   {
     id: 6,
-    name: 'E-Commerce API',
-    description: 'RESTful API for an e-commerce platform with authentication and payment integration.',
-    date: '01-2025',
-    status: 'in-progress',
-    category: 'full-stack',
-    techStack: ['Node.js', 'Express', 'MongoDB', 'Stripe'],
-    link: null,
+    name: 'Wellnex Systems',
+    description: 'Wellnex Systems is a unified HealthTech platform combining fitness, mental wellness, and smart digital services. Built to deliver personalized, scalable, and future-ready wellness experiences.',
+    date: '11-2025',
+    status: 'completed',
+    category: 'frontend',
+    techStack: ['React', 'Tailwind CSS'],
+    link: 'https://wellnex-eight.vercel.app',
+  },
+  {
+    id: 7,
+    name: 'Weather Widget',
+    description: 'A minimalist weather widget.',
+    date: '01-2024',
+    status: 'completed',
+    category: 'mini-projects',
+    techStack: ['HTML', 'CSS', 'API Integration'],
+    link: 'https://syedhamza6448.github.io/Weather-App',
+  },
+  {
+    id: 8,
+    name: 'Zoro Gallery',
+    description: 'A slider component to showcase my favourite anime character',
+    date: '02-2024',
+    status: 'completed',
+    category: 'mini-projects',
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+    link: 'https://syedhamza6448.github.io/Zoro-Gallery',
+  },
+  {
+    id: 9,
+    name: 'Instagram Clone',
+    description: 'A clone of Instagram, cloned it in my early days of Web Designing',
+    date: '10-2023',
+    status: 'completed',
+    category: 'mini-projects',
+    techStack: ['HTML', 'CSS'],
+    link: 'https://syedhamza6448.github.io/Clones/Instagram/source%20files/index.html',
+  },
+  {
+    id: 10,
+    name: 'Steam Clone',
+    description: 'A clone of Steam, cloned it in my early days of Web Designing',
+    date: '11-2023',
+    status: 'completed',
+    category: 'mini-projects',
+    techStack: ['HTML', 'CSS'],
+    link: 'https://syedhamza6448.github.io/Clones/Steam/source%20files/index.html',
+  },
+  {
+    id: 11,
+    name: 'Netflix Clone',
+    description: 'A clone of Netflix, cloned it in my early days of Web Designing',
+    date: '12-2023',
+    status: 'completed',
+    category: 'mini-projects',
+    techStack: ['HTML', 'CSS'],
+    link: 'https://syedhamza6448.github.io/Clones/Netflix/source%20file/netflix.html',
+  },
+  {
+    id: 12,
+    name: 'Portfolio v1',
+    description: 'An early portfolio website created with core web technologies. Focused on learning layout, styling, and basic interactivity.',
+    date: '11-2024',
+    status: 'completed',
+    category: 'frontend',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+    link: 'https://syedhamza6448.github.io/Portfolio',
   },
 ];
 
@@ -205,11 +265,10 @@ const FilterButton: React.FC<{
     onClick={onClick}
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
-    className={`px-4 py-2 text-sm font-mono rounded-lg transition-all duration-300 border ${
-      active
+    className={`px-4 py-2 text-sm font-mono rounded-lg transition-all duration-300 border ${active
         ? 'bg-accent text-accent-foreground border-accent'
         : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
-    }`}
+      }`}
   >
     {children}
   </motion.button>

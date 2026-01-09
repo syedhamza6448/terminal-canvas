@@ -122,9 +122,9 @@ const services: Service[] = [
   },
   {
     id: 7,
-    title: 'CMS',
-    description: 'Enhancing application speed and Core Web Vitals.',
-    icon: ShoppingCart,
+    title: 'WordPress Development',
+    description: 'Building fast, secure, and easy-to-manage WordPress websites tailored to your needs.',
+    icon: SiWordpress,
     features: ['Wordpress', 'Elementor', 'Ecommerce'],
   },
 ];

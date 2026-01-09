@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Gamepad2, Sparkles, Code2 } from 'lucide-react';
+import { ArrowRight, Gamepad2, Sparkles, Code2, ShoppingCart } from 'lucide-react';
 import PixelAlien from '../PixelAlien';
 import { 
   SiReact, 
@@ -119,6 +119,13 @@ const services: Service[] = [
     description: 'Enhancing application speed and Core Web Vitals.',
     icon: Zap,
     features: ['Code Splitting', 'Lazy Loading', 'CDN Setup'],
+  },
+  {
+    id: 7,
+    title: 'CMS',
+    description: 'Enhancing application speed and Core Web Vitals.',
+    icon: ShoppingCart,
+    features: ['Wordpress', 'Elementor', 'Ecommerce'],
   },
 ];
 
@@ -350,7 +357,7 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Services Sub-section */}
-        <div className="mt-20">
+        <div className="mt-20" id='services'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

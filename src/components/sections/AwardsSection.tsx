@@ -15,7 +15,7 @@ const awards: AwardItem[] = [
   {
     id: 1,
     title: 'Best Web Application',
-    issuer: 'Aptech Learning',
+    issuer: 'Aptech Vision',
     date: '2025',
     type: 'award',
     description: 'First place for innovative full-stack application development.',

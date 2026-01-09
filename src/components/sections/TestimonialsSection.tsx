@@ -14,19 +14,19 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: '',
-    role: 'Founder',
-    company: 'Zenstands',
-    content: 'Great experience working with Hamza. He delivered a clean and functional WordPress website exactly as discussed, maintained clear communication throughout, and met the requirements professionally. Really appreciate his cooperation and timely support. Wishing him all the best for future projects',
-    rating: 4,
+    name: 'Muhammad Murtaza',
+    role: 'Founder/Director',
+    company: 'Mustafa Schooling System',
+    content: 'We truly appreciate your excellent work on our school website. The design is clean, user-friendly, and perfectly reflects our school’s vision and values. Thank you for your professionalism, creativity, and timely support throughout the project.',
+    rating: 5,
   },
   {
     id: 2,
     name: '',
     role: 'Founder',
-    company: 'Mustafa Schooling System',
-    content: 'Great experience working with you. You delivered a clean and functional WordPress website exactly as discussed, maintained clear communication throughout, and met the requirements professionally. Really appreciate your cooperation and timely support. Wishing you all the best for future projects',
-    rating: 5,
+    company: 'Zenstands',
+    content: 'Great experience working with Hamza. He delivered a clean and functional WordPress website exactly as discussed, maintained clear communication throughout, and met the requirements professionally. Really appreciate his cooperation and timely support. Wishing him all the best for future projects',
+    rating: 4,
   },
 ];
 

@@ -131,7 +131,7 @@ const ContactSection: React.FC = () => {
           className="mb-12"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-accent">05.</span> Get In Touch
+            <span className="text-accent">04.</span> Get In Touch
           </h2>
           <div className="w-24 h-1 bg-accent" />
         </motion.div>

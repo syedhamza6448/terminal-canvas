@@ -47,8 +47,8 @@ const Index: React.FC = () => {
         <main>
           <HomeSection />
           <AboutSection />
-          <ProjectsSection />
           <ExperienceSection />
+          <ProjectsSection />
           <ContactSection />
         </main>
         <Footer />

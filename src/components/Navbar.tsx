@@ -19,17 +19,17 @@ const navLinks: NavLink[] = [
     ]
   },
   { 
-    name: 'Projects', 
-    href: '#projects',
-    subLinks: [
-      { name: 'Testimonials', href: '#testimonials' },
-    ]
-  },
-  { 
     name: 'Experience', 
     href: '#experience',
     subLinks: [
       { name: 'Awards', href: '#awards' },
+    ]
+  },
+  { 
+    name: 'Projects', 
+    href: '#projects',
+    subLinks: [
+      { name: 'Testimonials', href: '#testimonials' },
     ]
   },
   { name: 'Contact', href: '#contact' },

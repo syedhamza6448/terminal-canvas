@@ -15,8 +15,8 @@ const awards: AwardItem[] = [
   {
     id: 1,
     title: 'Best Web Application',
-    issuer: 'University Tech Fest',
-    date: '2024',
+    issuer: 'Aptech Learning',
+    date: '2025',
     type: 'award',
     description: 'First place for innovative full-stack application development.',
   },
@@ -68,7 +68,7 @@ const AwardsSection: React.FC = () => {
         className="mb-8"
       >
         <h3 className="font-heading text-2xl md:text-3xl font-bold mb-2 text-foreground">
-          <span className="text-accent font-mono text-lg">04.1</span> Awards & Certificates
+          <span className="text-accent font-mono text-lg">02.1</span> Awards & Certificates
         </h3>
         <p className="text-muted-foreground font-mono text-sm">
           $ ls achievements/
@@ -104,7 +104,7 @@ const AwardsSection: React.FC = () => {
                       <h4 className="font-heading font-bold text-foreground group-hover:text-accent transition-colors leading-tight">
                         {award.title}
                       </h4>
-                      <span className="text-xs font-mono px-2 py-0.5 rounded bg-secondary text-muted-foreground shrink-0">
+                      <span className="absolute bottom-2 right-2 text-xs font-mono px-2 py-0.5 rounded bg-secondary text-muted-foreground shrink-0">
                         {award.date}
                       </span>
                     </div>

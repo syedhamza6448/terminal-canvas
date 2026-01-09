@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Gamepad2, User, Sparkles, Code2 } from 'lucide-react';
+import { ArrowRight, Gamepad2, Sparkles, Code2 } from 'lucide-react';
 import PixelAlien from '../PixelAlien';
 import { 
   SiReact, 
@@ -22,6 +22,7 @@ import {
   SiWordpress, 
   SiElementor, 
 } from 'react-icons/si';
+import { Code, Palette, Server, Zap, Database, Plug2 } from 'lucide-react';
 
 type AboutTab = 'alien' | 'stats' | 'fun-facts';
 
@@ -68,6 +69,98 @@ const techStacks = [
   { name: 'Elementor', category: 'CMS', icon: SiElementor },
 ];
 
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  features: string[];
+}
+
+const services: Service[] = [
+  {
+    id: 1,
+    title: 'Frontend Development',
+    description: 'Building responsive, performant user interfaces with modern frameworks.',
+    icon: Code,
+    features: ['React / Next.js', 'TypeScript', 'Tailwind CSS'],
+  },
+  {
+    id: 2,
+    title: 'Backend Development',
+    description: 'Designing robust server-side solutions with scalable architecture.',
+    icon: Server,
+    features: ['Node.js', 'Laravel', 'ASP.NET Core'],
+  },
+  {
+    id: 3,
+    title: 'UI/UX Design',
+    description: 'Crafting intuitive user experiences with accessibility focus.',
+    icon: Palette,
+    features: ['Figma', 'Prototyping', 'Design Systems'],
+  },
+  {
+    id: 4,
+    title: 'API Development',
+    description: 'Designing and integrating secure, scalable APIs.',
+    icon: Plug2,
+    features: ['REST APIs', 'GraphQL', 'Third-party Integration'],
+  },
+  {
+    id: 5,
+    title: 'Database Design',
+    description: 'Architecting efficient data models and optimization.',
+    icon: Database,
+    features: ['MySQL', 'MongoDB', 'Data Modeling'],
+  },
+  {
+    id: 6,
+    title: 'Performance Optimization',
+    description: 'Enhancing application speed and Core Web Vitals.',
+    icon: Zap,
+    features: ['Code Splitting', 'Lazy Loading', 'CDN Setup'],
+  },
+];
+
+const ServiceCard: React.FC<{ service: Service; index: number }> = ({ service, index }) => {
+  const Icon = service.icon;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -3, scale: 1.02 }}
+      className="glass-card p-4 flex flex-col group"
+    >
+      <div className="flex items-start gap-3 mb-3">
+        <div className="p-2 rounded-lg bg-accent/10 border border-accent/20 group-hover:bg-accent/20 transition-colors">
+          <Icon className="w-4 h-4 text-accent" />
+        </div>
+        <div className="flex-1">
+          <h4 className="font-heading text-sm font-bold text-foreground group-hover:text-accent transition-colors">
+            {service.title}
+          </h4>
+          <p className="text-muted-foreground text-xs mt-1 leading-relaxed">
+            {service.description}
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-wrap gap-1.5 mt-auto">
+        {service.features.map((feature) => (
+          <span
+            key={feature}
+            className="px-2 py-0.5 text-[10px] font-mono bg-accent/10 text-accent rounded border border-accent/20"
+          >
+            {feature}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 const AboutSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AboutTab>('alien');
   const [hoveredStat, setHoveredStat] = useState<number | null>(null);
@@ -75,7 +168,7 @@ const AboutSection: React.FC = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex items-center py-24 overflow-hidden"
+      className="relative min-h-screen flex items-start py-24 overflow-hidden"
     >
       <div className="container mx-auto px-6">
         <motion.div
@@ -254,6 +347,30 @@ const AboutSection: React.FC = () => {
               </a>
             </div>
           </motion.div>
+        </div>
+
+        {/* Services Sub-section */}
+        <div className="mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <h3 className="font-heading text-2xl md:text-3xl font-bold mb-2 text-foreground">
+              <span className="text-accent font-mono text-lg">01.1</span> Services
+            </h3>
+            <p className="text-muted-foreground font-mono text-sm">
+              $ cat services.txt → Here's what I can help you build_
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {services.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

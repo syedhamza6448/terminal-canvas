@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, XCircle } from 'lucide-react';
+import TestimonialsSection from './TestimonialsSection';
 
 type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
@@ -361,6 +362,9 @@ const ProjectsSection: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Testimonials Sub-section */}
+        <TestimonialsSection />
       </div>
     </section>
   );

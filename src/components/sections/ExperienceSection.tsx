@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import AwardsSection from './AwardsSection';
 
 interface Experience {
   id: number;
@@ -95,6 +96,9 @@ const ExperienceSection: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Awards Sub-section */}
+        <AwardsSection />
       </div>
     </section>
   );

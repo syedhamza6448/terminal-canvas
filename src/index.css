@@ -457,9 +457,9 @@
 .crt-terminal-text {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: hsl(var(--accent));
   letter-spacing: 0.1em;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
 }
 
 .crt-prompt {
@@ -478,7 +478,7 @@
 .crt-progress-container {
   width: 300px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: hsl(var(--accent) / 0.15);
   position: relative;
   overflow: hidden;
   border-radius: 2px;
@@ -493,13 +493,13 @@
 
 .crt-progress-bar {
   height: 100%;
-  background: #fff;
+  background: hsl(var(--accent));
   position: relative;
   transition: width 0.03s linear;
   box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.3),
-    0 0 30px rgba(255, 255, 255, 0.2);
+    0 0 10px hsl(var(--accent) / 0.6),
+    0 0 20px hsl(var(--accent) / 0.4),
+    0 0 30px hsl(var(--accent) / 0.2);
 }
 
 .crt-progress-glow {
@@ -507,7 +507,7 @@
   top: -10px;
   left: 0;
   height: 24px;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1));
+  background: linear-gradient(to right, transparent, hsl(var(--accent) / 0.15));
   pointer-events: none;
 }
 
@@ -515,11 +515,11 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 2rem;
   font-weight: 300;
-  color: #fff;
+  color: hsl(var(--accent));
   letter-spacing: 0.2em;
   text-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.3);
+    0 0 10px hsl(var(--accent) / 0.6),
+    0 0 20px hsl(var(--accent) / 0.4);
 }
 
 .crt-line {
@@ -528,12 +528,12 @@
   right: 0;
   top: 50%;
   height: 2px;
-  background: #fff;
+  background: hsl(var(--accent));
   transform: translateY(-50%);
   box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.8),
-    0 0 30px rgba(255, 255, 255, 0.5),
-    0 0 50px rgba(255, 255, 255, 0.3);
+    0 0 10px hsl(var(--accent) / 0.9),
+    0 0 30px hsl(var(--accent) / 0.6),
+    0 0 50px hsl(var(--accent) / 0.4);
   z-index: 20;
 }
 
@@ -552,8 +552,8 @@
     height: 100vh;
     transform: translateY(0);
     box-shadow: 
-      0 0 100px rgba(255, 255, 255, 0.9),
-      0 0 200px rgba(255, 255, 255, 0.5);
+      0 0 100px hsl(var(--accent) / 0.9),
+      0 0 200px hsl(var(--accent) / 0.6);
   }
 }
 
@@ -563,7 +563,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #fff;
+  background: hsl(var(--accent));
   z-index: 30;
   animation: crt-final-flicker 0.6s ease-out forwards;
 }

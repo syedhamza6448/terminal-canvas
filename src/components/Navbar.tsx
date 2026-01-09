@@ -3,12 +3,35 @@ import { Moon, Sun, ChevronDown, Terminal, Menu, X } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const navLinks = [
+interface NavLink {
+  name: string;
+  href: string;
+  subLinks?: { name: string; href: string }[];
+}
+
+const navLinks: NavLink[] = [
   { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
+  { 
+    name: 'About', 
+    href: '#about',
+    subLinks: [
+      { name: 'Services', href: '#services' },
+    ]
+  },
+  { 
+    name: 'Projects', 
+    href: '#projects',
+    subLinks: [
+      { name: 'Testimonials', href: '#testimonials' },
+    ]
+  },
+  { 
+    name: 'Experience', 
+    href: '#experience',
+    subLinks: [
+      { name: 'Awards', href: '#awards' },
+    ]
+  },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -80,25 +103,43 @@ const Navbar: React.FC = () => {
             {/* Center Navigation - Desktop */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`relative px-4 py-2 text-sm font-mono transition-colors ${
-                    activeSection === link.href.slice(1)
-                      ? 'text-accent'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <span className="text-accent/70 mr-1">./</span>
-                  {link.name.toLowerCase()}
-                  {activeSection === link.href.slice(1) && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    />
+                <div key={link.name} className="relative group">
+                  <a
+                    href={link.href}
+                    className={`relative px-4 py-2 text-sm font-mono transition-colors flex items-center gap-1 ${
+                      activeSection === link.href.slice(1)
+                        ? 'text-accent'
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    <span className="text-accent/70 mr-1">./</span>
+                    {link.name.toLowerCase()}
+                    {link.subLinks && <ChevronDown className="w-3 h-3 opacity-50" />}
+                    {activeSection === link.href.slice(1) && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                  {link.subLinks && (
+                    <div className="absolute top-full left-0 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="glass-card py-1 rounded-lg min-w-[140px]">
+                        {link.subLinks.map((subLink) => (
+                          <a
+                            key={subLink.name}
+                            href={subLink.href}
+                            className="block px-4 py-2 text-sm font-mono text-muted-foreground hover:text-accent hover:bg-secondary/50 transition-colors"
+                          >
+                            <span className="text-accent/50 mr-1">└</span>
+                            {subLink.name.toLowerCase()}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   )}
-                </a>
+                </div>
               ))}
             </div>
 
@@ -203,21 +244,39 @@ const Navbar: React.FC = () => {
             >
               <div className="flex flex-col pt-20 px-6">
                 {navLinks.map((link, index) => (
-                  <motion.button
-                    key={link.name}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => handleMobileNavClick(link.href)}
-                    className={`text-left py-4 text-lg font-mono border-b border-border/50 transition-colors ${
-                      activeSection === link.href.slice(1)
-                        ? 'text-accent'
-                        : 'text-muted-foreground'
-                    }`}
-                  >
-                    <span className="text-accent/70 mr-2">./</span>
-                    {link.name.toLowerCase()}
-                  </motion.button>
+                  <div key={link.name}>
+                    <motion.button
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => handleMobileNavClick(link.href)}
+                      className={`text-left w-full py-4 text-lg font-mono border-b border-border/50 transition-colors ${
+                        activeSection === link.href.slice(1)
+                          ? 'text-accent'
+                          : 'text-muted-foreground'
+                      }`}
+                    >
+                      <span className="text-accent/70 mr-2">./</span>
+                      {link.name.toLowerCase()}
+                    </motion.button>
+                    {link.subLinks && (
+                      <div className="pl-6 border-b border-border/50">
+                        {link.subLinks.map((subLink, subIndex) => (
+                          <motion.button
+                            key={subLink.name}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 + subIndex * 0.05 }}
+                            onClick={() => handleMobileNavClick(subLink.href)}
+                            className="text-left w-full py-3 text-base font-mono text-muted-foreground hover:text-accent transition-colors"
+                          >
+                            <span className="text-accent/50 mr-2">└</span>
+                            {subLink.name.toLowerCase()}
+                          </motion.button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </motion.div>

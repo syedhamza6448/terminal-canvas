@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Trophy, Medal, Star } from 'lucide-react';
+import { Award, Trophy, Medal } from 'lucide-react';
 
 interface AwardItem {
   id: number;
@@ -57,20 +57,9 @@ const getIcon = (type: AwardItem['type']) => {
   }
 };
 
-const getTypeColor = (type: AwardItem['type']) => {
-  switch (type) {
-    case 'award':
-      return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/30';
-    case 'certificate':
-      return 'text-accent bg-accent/10 border-accent/30';
-    case 'achievement':
-      return 'text-purple-500 bg-purple-500/10 border-purple-500/30';
-  }
-};
-
 const AwardsSection: React.FC = () => {
   return (
-    <div className="mt-20">
+    <div id="awards" className="mt-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -89,41 +78,55 @@ const AwardsSection: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-4">
         {awards.map((award, index) => {
           const Icon = getIcon(award.type);
-          const colorClass = getTypeColor(award.type);
           
           return (
             <motion.div
               key={award.id}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="glass-card p-5 flex gap-4 group"
+              whileHover={{ scale: 1.02, y: -4 }}
+              className="relative group"
             >
-              {/* Icon */}
-              <div className={`shrink-0 p-3 rounded-lg border ${colorClass}`}>
-                <Icon className="w-5 h-5" />
-              </div>
-              
-              {/* Content */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between gap-2">
-                  <h4 className="font-heading font-bold text-foreground group-hover:text-accent transition-colors">
-                    {award.title}
-                  </h4>
-                  <span className="text-xs font-mono text-muted-foreground shrink-0">
-                    {award.date}
+              {/* Card with glass effect */}
+              <div className="glass-card p-5 h-full border-l-2 border-l-accent/50 group-hover:border-l-accent transition-colors">
+                {/* Header row */}
+                <div className="flex items-start gap-4">
+                  {/* Icon container */}
+                  <div className="shrink-0 p-3 rounded-lg bg-accent/10 border border-accent/20 group-hover:bg-accent/20 transition-colors">
+                    <Icon className="w-5 h-5 text-accent" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h4 className="font-heading font-bold text-foreground group-hover:text-accent transition-colors leading-tight">
+                        {award.title}
+                      </h4>
+                      <span className="text-xs font-mono px-2 py-0.5 rounded bg-secondary text-muted-foreground shrink-0">
+                        {award.date}
+                      </span>
+                    </div>
+                    
+                    <p className="text-sm text-accent font-mono">
+                      @ {award.issuer}
+                    </p>
+                    
+                    {award.description && (
+                      <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                        {award.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Type badge */}
+                <div className="absolute top-3 right-3">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-accent/60 bg-accent/5 px-2 py-0.5 rounded">
+                    {award.type}
                   </span>
                 </div>
-                <p className="text-sm text-accent font-mono mt-0.5">
-                  @ {award.issuer}
-                </p>
-                {award.description && (
-                  <p className="text-sm text-muted-foreground mt-2">
-                    {award.description}
-                  </p>
-                )}
               </div>
             </motion.div>
           );

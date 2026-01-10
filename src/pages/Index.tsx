@@ -42,9 +42,15 @@ const Index: React.FC = () => {
     <>
       {isLoading && <CRTLoader onComplete={handleLoadingComplete} />}
       <div className={`relative min-h-screen bg-background scroll-smooth ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}>
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-accent-foreground focus:rounded-lg"
+        >
+          Skip to main content
+        </a>
         <CustomCursor />
         <Navbar />
-        <main>
+        <main id="main-content" role="main">
           <HomeSection />
           <AboutSection />
           <ExperienceSection />

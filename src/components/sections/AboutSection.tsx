@@ -175,21 +175,22 @@ const AboutSection: React.FC = () => {
   return (
     <section
       id="about"
+      aria-labelledby="about-heading"
       className="relative min-h-screen flex items-start py-24 overflow-hidden"
     >
       <div className="container mx-auto px-6">
-        <motion.div
+        <motion.header
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-accent">01.</span> About Me
+          <h2 id="about-heading" className="font-heading text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-accent" aria-hidden="true">01.</span> About Me
           </h2>
-          <div className="w-24 h-1 bg-accent" />
-        </motion.div>
+          <div className="w-24 h-1 bg-accent" aria-hidden="true" />
+        </motion.header>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Terminal Window */}
@@ -357,28 +358,28 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Services Sub-section */}
-        <div className="mt-20" id='services'>
-          <motion.div
+        <article className="mt-20" id="services" aria-labelledby="services-heading">
+          <motion.header
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-8"
           >
-            <h3 className="font-heading text-2xl md:text-3xl font-bold mb-2 text-foreground">
-              <span className="text-accent font-mono text-lg">01.1</span> Services
+            <h3 id="services-heading" className="font-heading text-2xl md:text-3xl font-bold mb-2 text-foreground">
+              <span className="text-accent font-mono text-lg" aria-hidden="true">01.1</span> Web Development Services
             </h3>
             <p className="text-muted-foreground font-mono text-sm">
               $ cat services.txt → Here's what I can help you build_
             </p>
-          </motion.div>
+          </motion.header>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4" role="list" aria-label="Available development services">
             {services.map((service, index) => (
               <ServiceCard key={service.id} service={service} index={index} />
             ))}
           </div>
-        </div>
+        </article>
       </div>
     </section>
   );

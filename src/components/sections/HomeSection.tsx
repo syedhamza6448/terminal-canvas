@@ -23,13 +23,14 @@ const HomeSection: React.FC = () => {
   return (
     <section
       id="home"
+      aria-label="Introduction and Hero Section"
       className="relative min-h-screen flex items-center justify-center overflow-hidden scanlines"
     >
       {/* Background noise */}
-      <div className="absolute inset-0 noise" />
+      <div className="absolute inset-0 noise" aria-hidden="true" />
 
       {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5" aria-hidden="true">
         <div className="w-full h-full" style={{
           backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.1) 1px, transparent 1px),
                            linear-gradient(90deg, hsl(var(--foreground) / 0.1) 1px, transparent 1px)`,
@@ -40,7 +41,7 @@ const HomeSection: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Left Side - Text Content */}
-          <motion.div
+          <motion.header
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -52,7 +53,7 @@ const HomeSection: React.FC = () => {
               transition={{ delay: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-accent/30 bg-accent/5"
             >
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" aria-hidden="true" />
               <span className="text-sm font-mono text-accent">Available for opportunities</span>
             </motion.div>
 
@@ -68,8 +69,9 @@ const HomeSection: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
               className="text-xl md:text-2xl text-muted-foreground font-mono mb-8"
+              role="doc-subtitle"
             >
-              <span className="text-accent">{'>'}</span>{' '}
+              <span className="text-accent" aria-hidden="true">{'>'}</span>{' '}
               <TypingAnimation roles={developerRoles} />
             </motion.p>
 
@@ -83,18 +85,19 @@ const HomeSection: React.FC = () => {
               Turning complex problems into elegant, user-friendly applications.
             </motion.p>
 
-            <motion.div
+            <motion.nav
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              aria-label="Primary actions"
             >
               <a
                 href="#projects"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-mono rounded-lg hover:opacity-90 transition-opacity accent-glow"
               >
                 View Projects
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </a>
               <a
                 href="#contact"
@@ -102,11 +105,11 @@ const HomeSection: React.FC = () => {
               >
                 Get In Touch
               </a>
-            </motion.div>
-          </motion.div>
+            </motion.nav>
+          </motion.header>
 
           {/* Right Side - Profile Image with Halftone */}
-          <motion.div
+          <motion.figure
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -114,7 +117,7 @@ const HomeSection: React.FC = () => {
           >
             <div className="relative">
               {/* Glow background */}
-              <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full" />
+              <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full" aria-hidden="true" />
 
               {/* Image container with dynamic halftone */}
               <div 
@@ -128,13 +131,17 @@ const HomeSection: React.FC = () => {
                 <div className="w-full h-full bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center">
                   <img 
                     src="img/Me-bg.png" 
-                    alt="Syed Hamza Imran" 
+                    alt="Syed Hamza Imran - Full-Stack Developer and React Specialist" 
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    width={320}
+                    height={320}
                   />
                 </div>
                 {/* Dynamic halftone overlay */}
                 <div 
                   className="absolute inset-0 pointer-events-none"
+                  aria-hidden="true"
                   style={{
                     backgroundImage: `radial-gradient(circle, hsl(var(--accent)) ${dotSize}px, transparent ${dotSize}px)`,
                     backgroundSize: `${gridSize}px ${gridSize}px`,
@@ -145,8 +152,8 @@ const HomeSection: React.FC = () => {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-accent" />
-              <div className="absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-accent" />
+              <div className="absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-accent" aria-hidden="true" />
+              <div className="absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-accent" aria-hidden="true" />
             </div>
 
             {/* Halftone Intensity Slider */}
@@ -157,19 +164,22 @@ const HomeSection: React.FC = () => {
               className="w-64 md:w-80 space-y-2"
             >
               <div className="flex justify-between items-center">
-                <span className="text-xs font-mono text-muted-foreground">halftone_intensity:</span>
-                <span className="text-xs font-mono text-accent">{halftoneIntensity}%</span>
+                <label htmlFor="halftone-slider" className="text-xs font-mono text-muted-foreground">halftone_intensity:</label>
+                <span className="text-xs font-mono text-accent" aria-live="polite">{halftoneIntensity}%</span>
               </div>
               <Slider
+                id="halftone-slider"
                 value={[halftoneIntensity]}
                 onValueChange={(value) => setHalftoneIntensity(value[0])}
                 min={0}
                 max={100}
                 step={1}
                 className="w-full"
+                aria-label="Adjust halftone effect intensity"
               />
             </motion.div>
-          </motion.div>
+            <figcaption className="sr-only">Profile photo of Syed Hamza Imran with adjustable halftone visual effect</figcaption>
+          </motion.figure>
         </div>
 
         {/* Scroll Indicator */}
@@ -178,6 +188,7 @@ const HomeSection: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          aria-hidden="true"
         >
           <span className="text-sm font-mono text-muted-foreground">Scroll to explore</span>
           <motion.div

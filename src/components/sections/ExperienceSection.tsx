@@ -68,21 +68,22 @@ const ExperienceSection: React.FC = () => {
   return (
     <section
       id="experience"
+      aria-labelledby="experience-heading"
       className="relative min-h-screen py-24 overflow-hidden"
     >
       <div className="container mx-auto px-6">
-        <motion.div
+        <motion.header
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-accent">02.</span> Experience
+          <h2 id="experience-heading" className="font-heading text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-accent" aria-hidden="true">02.</span> Professional Experience
           </h2>
-          <div className="w-24 h-1 bg-accent" />
-        </motion.div>
+          <div className="w-24 h-1 bg-accent" aria-hidden="true" />
+        </motion.header>
 
         {/* Timeline */}
         <div className="relative">

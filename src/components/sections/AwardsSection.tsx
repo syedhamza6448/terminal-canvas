@@ -19,31 +19,7 @@ const awards: AwardItem[] = [
     date: '2025',
     type: 'award',
     description: 'First place for innovative full-stack application development.',
-  },
-  {
-    id: 2,
-    title: 'React Developer Certification',
-    issuer: 'Meta',
-    date: '2024',
-    type: 'certificate',
-    description: 'Professional certification in React.js development.',
-  },
-  {
-    id: 3,
-    title: 'JavaScript Algorithms',
-    issuer: 'freeCodeCamp',
-    date: '2023',
-    type: 'certificate',
-    description: 'Data structures and algorithms in JavaScript.',
-  },
-  {
-    id: 4,
-    title: 'Hackathon Finalist',
-    issuer: 'DevCon 2024',
-    date: '2024',
-    type: 'achievement',
-    description: 'Top 5 finish in 48-hour coding challenge.',
-  },
+  }, 
 ];
 
 const getIcon = (type: AwardItem['type']) => {

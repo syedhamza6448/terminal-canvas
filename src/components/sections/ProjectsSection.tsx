@@ -20,6 +20,16 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    name: 'Subway Surfers(Fan Tribute)',
+    description: 'A nostalgic Subway Surfers fan tribute that brings childhood memories to life with playful motion and game UI.',
+    date: '01-2026',
+    status: 'in-progress',
+    category: 'frontend',
+    techStack: ['React', 'TypeScript', 'Tailwind CSS' ],
+    link: null,
+  },
+  {
+    id: 2,
     name: 'Inquizzitive',
     description: 'Full-stack quiz platform with real-time gameplay, scoring logic, and result tracking.',
     date: '08-2025',
@@ -29,7 +39,7 @@ const projects: Project[] = [
     link: 'https://www.inquizzitive.io',
   },
   {
-    id: 2,
+    id: 3,
     name: 'Cyber Portfolio',
     description: 'React-based frontend project exploring component-driven UI and state management.',
     date: '12-2025',
@@ -39,7 +49,7 @@ const projects: Project[] = [
     link: null,
   },
   {
-    id: 3,
+    id: 4,
     name: 'Portfolio v2',
     description: 'Previous iteration of my personal portfolio website.',
     date: '02-2025',
@@ -49,7 +59,7 @@ const projects: Project[] = [
     link: 'https://syedhamza6448.github.io/VCard-Portfolio',
   },
   {
-    id: 4,
+    id: 5,
     name: 'Expense Voyage',
     description: 'Expense Voyage is a travel planning and expense management web app that lets users create trips, set budgets, and track expenses in real time.',
     date: '10-2025',
@@ -59,7 +69,7 @@ const projects: Project[] = [
     link: null,
   },
   {
-    id: 5,
+    id: 6,
     name: 'Event Sphere',
     description: 'EventSphere is a centralized web-based event management platform that streamlines college events by enabling seamless event creation, registration, tracking, and engagement. It improves communication, boosts participation, and maintains digital records of all events in one place.',
     date: '10-2025',
@@ -69,7 +79,7 @@ const projects: Project[] = [
     link: null,
   },
   {
-    id: 6,
+    id: 7,
     name: 'Wellnex Systems',
     description: 'Wellnex Systems is a unified HealthTech platform combining fitness, mental wellness, and smart digital services. Built to deliver personalized, scalable, and future-ready wellness experiences.',
     date: '11-2025',
@@ -79,7 +89,7 @@ const projects: Project[] = [
     link: 'https://wellnex-eight.vercel.app',
   },
   {
-    id: 7,
+    id: 8,
     name: 'Weather Widget',
     description: 'A minimalist weather widget.',
     date: '01-2024',
@@ -89,7 +99,7 @@ const projects: Project[] = [
     link: 'https://syedhamza6448.github.io/Weather-App',
   },
   {
-    id: 8,
+    id: 9,
     name: 'Zoro Gallery',
     description: 'A slider component to showcase my favourite anime character',
     date: '02-2024',
@@ -99,7 +109,7 @@ const projects: Project[] = [
     link: 'https://syedhamza6448.github.io/Zoro-Gallery',
   },
   {
-    id: 9,
+    id: 10,
     name: 'Instagram Clone',
     description: 'A clone of Instagram, cloned it in my early days of Web Designing',
     date: '10-2023',
@@ -109,7 +119,7 @@ const projects: Project[] = [
     link: 'https://syedhamza6448.github.io/Clones/Instagram/source%20files/index.html',
   },
   {
-    id: 10,
+    id: 11,
     name: 'Steam Clone',
     description: 'A clone of Steam, cloned it in my early days of Web Designing',
     date: '11-2023',
@@ -119,7 +129,7 @@ const projects: Project[] = [
     link: 'https://syedhamza6448.github.io/Clones/Steam/source%20files/index.html',
   },
   {
-    id: 11,
+    id: 12,
     name: 'Netflix Clone',
     description: 'A clone of Netflix, cloned it in my early days of Web Designing',
     date: '12-2023',
@@ -129,7 +139,7 @@ const projects: Project[] = [
     link: 'https://syedhamza6448.github.io/Clones/Netflix/source%20file/netflix.html',
   },
   {
-    id: 12,
+    id: 13,
     name: 'Portfolio v1',
     description: 'An early portfolio website created with core web technologies. Focused on learning layout, styling, and basic interactivity.',
     date: '11-2024',

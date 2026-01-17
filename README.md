@@ -1,73 +1,136 @@
-# Welcome to your Lovable project
+# 🖥️ Terminal-Inspired Developer Portfolio
 
-## Project info
+A modern, terminal-style personal portfolio built with **React, TypeScript, and Tailwind CSS**. This project blends a retro command-line aesthetic with modern UI patterns like glassmorphism, smooth animations, and dynamic theming — designed to feel both nostalgic and premium.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## ✨ Features
 
-There are several ways of editing your application.
+* ⚡ **Terminal-inspired UI** with pixel/scanline vibes
+* 🌗 **Dark / Light mode** with soothing contrast
+* 🎨 **Dynamic accent color switching** (Emerald, Cyan, Indigo, Rose, Amber)
+* 🖱️ **Custom animated cursor** synced with accent color
+* 🧊 **Modern glassmorphism** layered over a retro terminal feel
+* 📱 Fully responsive (mobile → desktop)
+* ♿ Accessibility- and SEO-friendly structure
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🧭 Sections Overview
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🏠 Home
 
-**Use your preferred IDE**
+* Developer name and headline
+* Profile image with **halftone / dot-matrix effect**
+* Subtle “Scroll To Explore” interaction
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 👤 About
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* Terminal-style window with playful ASCII / command output
+* Short personal introduction
+* CTA button to jump directly to Contact
 
-Follow these steps:
+### 🧩 Projects
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* Dynamic, data-driven project cards
+* Each card includes:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+  * Project date (MM-YYYY)
+  * Status indicator:
 
-# Step 3: Install the necessary dependencies.
-npm i
+    * ✅ Completed
+    * 🚧 In Progress
+    * 📦 Archived
+  * Tech stack chips
+  * Live project link
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### 🕒 Experience
+
+* Vertical timeline layout
+* Duration, company name, and impact-driven descriptions
+* Clean flow with subtle animations
+
+### 📬 Contact
+
+* Terminal-styled contact form
+* “Unpowered” inactive state that lights up when valid
+* Social links displayed as snack-bar style rows
+
+---
+
+## 🎨 Design System
+
+* **Primary Colors**
+
+  * Dark mode: Black background
+  * Light mode: Soft off-white background
+
+* **Secondary Accent Colors**
+
+  * Emerald
+  * Cyan
+  * Indigo
+  * Rose
+  * Amber
+
+* **Typography**
+
+  * Monospace / terminal font for body text
+  * Clean modern font for headings
+
+* **UI Details**
+
+  * Custom scrollbar
+  * Subtle noise / pixel grain
+  * Smooth hover and focus states
+
+---
+
+## 🛠️ Tech Stack
+
+* **React**
+* **TypeScript**
+* **Tailwind CSS**
+* Component-based architecture
+* SEO-optimized semantic HTML
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
+
+# Build for production
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🔍 SEO & Performance
 
-**Use GitHub Codespaces**
+* Semantic HTML5 structure
+* Optimized meta tags and headings
+* Lazy-loaded images
+* Optimized Core Web Vitals
+* JSON-LD ready for structured data
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📌 Philosophy
 
-This project is built with:
+This portfolio is built with the idea that **a developer’s website should feel like their playground** — expressive, experimental, and intentional. It reflects a love for clean code, thoughtful UX, and creative frontend engineering.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 📄 License
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+This project is open for inspiration and learning. Feel free to fork and customize — just don’t forget to make it your own ✨
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Built & designed by Syed Hamza Imran**

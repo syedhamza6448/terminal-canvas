@@ -43,7 +43,7 @@ const getIcon = (type: AwardItem['type']) => {
 
 const AwardsSection: React.FC = () => {
   return (
-    <div id="awards" className="mt-20">
+    <div id='awards' className="mt-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

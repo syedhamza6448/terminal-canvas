@@ -26,7 +26,7 @@ const projects: Project[] = [
     status: 'in-progress',
     category: 'frontend',
     techStack: ['React', 'TypeScript', 'Tailwind CSS' ],
-    link: null,
+    link: 'https://subway-surfer-tribute.vercel.app',
   },
   {
     id: 2,

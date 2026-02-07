@@ -52,7 +52,7 @@ const TestimonialsSection: React.FC = () => {
         viewport={{ once: true }}
         className="mb-8"
       >
-        <h3 className="font-heading text-2xl md:text-3xl font-bold mb-2 text-foreground">
+        <h3 id='testimonials' className="font-heading text-2xl md:text-3xl font-bold mb-2 text-foreground">
           <span className="text-accent font-mono text-lg">03.1</span> Testimonials
         </h3>
         <p className="text-muted-foreground font-mono text-sm">

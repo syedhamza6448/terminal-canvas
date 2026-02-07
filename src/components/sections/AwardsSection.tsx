@@ -20,6 +20,14 @@ const awards: AwardItem[] = [
     type: 'award',
     description: 'First place for innovative full-stack application development.',
   }, 
+  {
+    id: 2,
+    title: "Certification of Participation in ProBattle'26",
+    issuer: 'IBA',
+    date: '2026',
+    type: 'certificate',
+    description: 'Participated in ProBattle ’26, a competitive tech event organized by the IBA Computer Science Society, focused on problem-solving and teamwork.',
+  }, 
 ];
 
 const getIcon = (type: AwardItem['type']) => {

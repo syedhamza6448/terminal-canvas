@@ -19,13 +19,23 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 14,
+    name: 'SynScript',
+    description: 'A collaborative research & citation engine where researchers build shared Knowledge Vaults with real-time sync, annotated PDFs, role-based access control, and Redis-powered caching.',
+    date: '02-2026',
+    status: 'completed',
+    category: 'full-stack',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Redis', 'React Query', 'GSAP', 'Zod', 'Radix UI'],
+    link: 'https://synscript.vercel.app',
+  },
+  {
     id: 1,
-    name: 'Subway Surfers(Fan Tribute)',
+    name: 'Subway Surfers (Fan Tribute)',
     description: 'A nostalgic Subway Surfers fan tribute that brings childhood memories to life with playful motion and game UI.',
     date: '01-2026',
     status: 'in-progress',
     category: 'frontend',
-    techStack: ['React', 'TypeScript', 'Tailwind CSS' ],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS'],
     link: 'https://subway-surfer-tribute.vercel.app',
   },
   {
@@ -277,8 +287,8 @@ const FilterButton: React.FC<{
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
     className={`px-4 py-2 text-sm font-mono rounded-lg transition-all duration-300 border ${active
-        ? 'bg-accent text-accent-foreground border-accent'
-        : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
+      ? 'bg-accent text-accent-foreground border-accent'
+      : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
       }`}
   >
     {children}

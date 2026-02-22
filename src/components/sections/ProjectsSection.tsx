@@ -21,7 +21,7 @@ const projects: Project[] = [
   {
     id: 15,
     name: 'FinTrack',
-    description: 'A collaborative research & citation engine where researchers build shared Knowledge Vaults with real-time sync, annotated PDFs, role-based access control, and Redis-powered caching.',
+    description: 'FinTrack is a personal finance dashboard web application that helps users manage their finances comprehensively. It allows users to track expenses, manage budgets, maintain an investment portfolio, handle debt management, set and monitor savings goals, view financial reports, and access educational resources.',
     date: '02-2026',
     status: 'in-progress',
     category: 'full-stack',

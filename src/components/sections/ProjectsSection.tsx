@@ -19,6 +19,16 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 15,
+    name: 'FinTrack',
+    description: 'A collaborative research & citation engine where researchers build shared Knowledge Vaults with real-time sync, annotated PDFs, role-based access control, and Redis-powered caching.',
+    date: '02-2026',
+    status: 'in-progress',
+    category: 'full-stack',
+    techStack: ['ASP.NET Core', 'C#', 'Tailwind CSS', 'MS SQL Server', 'Chart.js', 'Javascript', 'GSAP', 'Razor Views(.cshtml)'],
+    link: null,
+  },
+  {
     id: 14,
     name: 'SynScript',
     description: 'A collaborative research & citation engine where researchers build shared Knowledge Vaults with real-time sync, annotated PDFs, role-based access control, and Redis-powered caching.',
@@ -33,7 +43,7 @@ const projects: Project[] = [
     name: 'Subway Surfers (Fan Tribute)',
     description: 'A nostalgic Subway Surfers fan tribute that brings childhood memories to life with playful motion and game UI.',
     date: '01-2026',
-    status: 'in-progress',
+    status: 'archived',
     category: 'frontend',
     techStack: ['React', 'TypeScript', 'Tailwind CSS'],
     link: 'https://subway-surfer-tribute.vercel.app',

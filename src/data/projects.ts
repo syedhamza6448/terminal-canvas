@@ -20,6 +20,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 99,
+    name: 'NexaFlow',
+    description: 'NexaFlow is a full-stack project management platform with real-time collaboration, Kanban boards, Gantt charts, and AI-powered task prioritization. Built for teams that move fast and need clarity across sprints, milestones, and deliverables.',
+    date: '02-2026',
+    status: 'completed',
+    category: 'full-stack',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Redis', 'Socket.io', 'Prisma', 'Zod'],
+    link: 'https://nexaflow-demo.vercel.app',
+    github: 'https://github.com/demo/nexaflow',
+    favicon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+    screenshots: [
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
+    ],
+    fonts: ['JetBrains Mono', 'Inter', 'Space Grotesk'],
+    featured: true,
+    modalEnabled: true,
+  },
+  {
     id: 15,
     name: 'FinTrack',
     description: 'FinTrack is a personal finance dashboard web application that helps users manage their finances comprehensively. It allows users to track expenses, manage budgets, maintain an investment portfolio, handle debt management, set and monitor savings goals, view financial reports, and access educational resources.',
@@ -28,7 +48,6 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['ASP.NET Core', 'C#', 'Tailwind CSS', 'MS SQL Server', 'Chart.js', 'Javascript', 'GSAP', 'Razor Views(.cshtml)'],
     link: null,
-    featured: true,
   },
   {
     id: 14,

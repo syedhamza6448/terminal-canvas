@@ -39,6 +39,7 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Redis', 'React Query', 'GSAP', 'Zod', 'Radix UI'],
     link: 'https://synscript.vercel.app',
+    favicon: ''
   },
   {
     id: 1,

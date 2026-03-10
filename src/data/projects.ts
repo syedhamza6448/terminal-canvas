@@ -64,7 +64,7 @@ export const projects: Project[] = [
     name: 'Subway Surfers (Fan Tribute)',
     description: 'A nostalgic Subway Surfers fan tribute that brings childhood memories to life with playful motion and game UI.',
     date: '01-2026',
-    status: 'archived',
+    status: 'in-progress',
     category: 'frontend',
     techStack: ['React', 'TypeScript', 'Tailwind CSS'],
     link: 'https://subway-surfer-tribute.vercel.app',

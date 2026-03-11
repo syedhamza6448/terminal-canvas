@@ -48,7 +48,6 @@ export const projects: Project[] = [
     techStack: ['ASP.NET Core', 'C#', 'Tailwind CSS', 'MS SQL Server', 'Chart.js', 'Javascript', 'GSAP', 'Razor Views(.cshtml)'],
     link: null,
     featured: true,
-    screenshots: []
   },
   {
     id: 14,
@@ -59,7 +58,14 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Redis', 'React Query', 'GSAP', 'Zod', 'Radix UI'],
     link: 'https://synscript.vercel.app',
-    favicon: ''
+    favicon: '',
+    screenshots: [
+      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptHero.png?raw=true',
+      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptDarkHero.png?raw=true',
+      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptDashboard.png?raw=true',
+      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptNoti.png?raw=true',
+      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptVault.png?raw=true',
+    ]
   },
   {
     id: 1,
@@ -80,6 +86,7 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['Blade Template Engine(HTML, CSS, JS)', 'Laravel(PHP)', 'MySQL', 'REST APIs'],
     link: 'https://www.inquizzitive.io',
+    favicon: 'https://inquizzitive.io/assets/images/Inquizzitive_logo_darkmode.png'
   },
   {
     id: 3,

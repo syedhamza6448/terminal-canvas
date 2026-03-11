@@ -1,3 +1,54 @@
+// Cyber Portfolio
+import cyberPortfolio from '/public/img/projects/cyberPortfolio/cyberPortfolioHero.png'
+// EventSphere
+import eventSphereDashboard from '/public/img/projects/eventSphere/eventSphereDashboard.png'
+import eventSphereEventsPage from '/public/img/projects/eventSphere/eventSphereEventsPage.png'
+import eventSphereFAQ from '/public/img/projects/eventSphere/eventSphereFAQ.png'
+import eventSphereHero from '/public/img/projects/eventSphere/eventSphereHero.png'
+import eventSphereFav from '/public/img/projects/eventSphere/fav-logo1.png'
+// Expense Voyage
+import expenseVoyageHero from '/public/img/projects/expenseVoyage/expenseVoyageHero.png'
+import expenseVoyageFooter from '/public/img/projects/expenseVoyage/expenseVoyageFooter.png'
+import expenseVoyageAdminDashboard from '/public/img/projects/expenseVoyage/expenseVoyageAdminDashboard.png'
+import expenseVoyageFav from '/public/img/projects/expenseVoyage/expense_voyage_favicon.png'
+// Inquizzitive
+import inquizzitiveBrowseQuiz from '/public/img/projects/inquizzitive/inquizzitiveBrowseQuiz.png'
+import inquizzitiveHero from '/public/img/projects/inquizzitive/inquizzitiveHero.png'
+import inquizzitiveHeroDark from '/public/img/projects/inquizzitive/inquizzitiveHeroDark.png'
+import inquizzitiveProfile from '/public/img/projects/inquizzitive/inquizzitiveProfile.png'
+import inquizzitiveQuizResult from '/public/img/projects/inquizzitive/inquizzitiveQuizResult.png'
+import inquizzitiveSidebar from '/public/img/projects/inquizzitive/inquizzitiveSidebar.png'
+// Mini Projects
+import instaClone from '/public/img/projects/miniProjects/instaClone.png'
+import netflixClone from '/public/img/projects/miniProjects/netflixClone.png'
+import steamClone from '/public/img/projects/miniProjects/steamClone.png'
+import weatherWidget from '/public/img/projects/miniProjects/weatherWidget.png'
+import zoroGallery from '/public/img/projects/miniProjects/zoroGallery.png'
+// Portfolio V1
+import potfolioV1Hero from '/public/img/projects/portfolioV1/potfolioV1Hero.png'
+import potfolioV1Service from '/public/img/projects/portfolioV1/potfolioV1Service.png'
+// Portfolio V2
+import potfolioV2About from '/public/img/projects/portfolioV2/potfolioV2About.png'
+import potfolioV2Contact from '/public/img/projects/portfolioV2/potfolioV2Contact.png'
+// Subway Surfers (Tribute)
+import subSurfHero from '/public/img/projects/subSurf/subSurfHero.png'
+import subSurfBoardDisplay from '/public/img/projects/subSurf/subSurfBoardDisplay.png'
+import subSurfBoards from '/public/img/projects/subSurf/subSurfBoards.png'
+import subSurfCharDisplay from '/public/img/projects/subSurf/subSurfCharDisplay.png'
+import subSurfChars from '/public/img/projects/subSurf/subSurfChars.png'
+import subSurfDestination from '/public/img/projects/subSurf/subSurfDestination.png'
+import subSurfFav from '/public/img/projects/subSurf/subway-surfers-logo.png'
+// Synscript
+import synscriptHero from '/public/img/projects/synscript/synscriptHero.png'
+import synscriptDarkHero from '/public/img/projects/synscript/synscriptDarkHero.png'
+import synscriptDashboard from '/public/img/projects/synscript/synscriptDashboard.png'
+import synscriptNoti from '/public/img/projects/synscript/synscriptNoti.png'
+import synscriptVault from '/public/img/projects/synscript/synscriptVault.png'
+import synscriptFav from '/public/img/projects/synscript/icon.png'
+// Wellnex
+import wellnexHero from '/public/img/projects/wellnex/wellnexHero.png'
+import wellnexHeroLight from '/public/img/projects/wellnex/wellnexHeroLight.png'
+
 export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
 
@@ -47,6 +98,7 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['ASP.NET Core', 'C#', 'Tailwind CSS', 'MS SQL Server', 'Chart.js', 'Javascript', 'GSAP', 'Razor Views(.cshtml)'],
     link: null,
+    github: 'https://github.com/syedhamza6448/FinTrack',
     featured: true,
   },
   {
@@ -58,14 +110,12 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Redis', 'React Query', 'GSAP', 'Zod', 'Radix UI'],
     link: 'https://synscript.vercel.app',
-    favicon: '',
+    favicon: synscriptFav,
     screenshots: [
-      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptHero.png?raw=true',
-      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptDarkHero.png?raw=true',
-      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptDashboard.png?raw=true',
-      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptNoti.png?raw=true',
-      'https://github.com/syedhamza6448/terminal-canvas/blob/main/public/img/projects/synscript/synscriptVault.png?raw=true',
-    ]
+      synscriptHero, synscriptDarkHero, synscriptDashboard, synscriptNoti, synscriptVault
+    ],
+    github: 'https://github.com/syedhamza6448/SynScript',
+    fonts: ['DM Mono', 'Space Grotesk']
   },
   {
     id: 1,
@@ -75,7 +125,13 @@ export const projects: Project[] = [
     status: 'completed',
     category: 'frontend',
     techStack: ['React', 'TypeScript', 'Tailwind CSS'],
+    favicon: subSurfFav,
+    screenshots: [
+      subSurfHero, subSurfChars, subSurfCharDisplay, subSurfDestination, subSurfBoards, subSurfBoardDisplay
+    ],
     link: 'https://subway-surfer-tribute.vercel.app',
+    github: 'https://github.com/syedhamza6448/subway-run-tribute',
+    fonts: ['Titan One', 'Lato']
   },
   {
     id: 2,
@@ -86,7 +142,11 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['Blade Template Engine(HTML, CSS, JS)', 'Laravel(PHP)', 'MySQL', 'REST APIs'],
     link: 'https://www.inquizzitive.io',
-    favicon: 'https://inquizzitive.io/assets/images/Inquizzitive_logo_darkmode.png'
+    favicon: 'https://inquizzitive.io/assets/images/Inquizzitive_logo_darkmode.png',
+    screenshots: [
+      inquizzitiveHeroDark, inquizzitiveHero, inquizzitiveBrowseQuiz, inquizzitiveProfile, inquizzitiveQuizResult, inquizzitiveSidebar
+    ],
+    fonts: ['Outfit']
   },
   {
     id: 3,
@@ -97,6 +157,10 @@ export const projects: Project[] = [
     category: 'frontend',
     techStack: ['React', 'JavaScript', 'Tailwind'],
     link: null,
+    screenshots: [
+      cyberPortfolio
+    ],
+    fonts: ['Nexa', 'Subject Zero Display']
   },
   {
     id: 4,
@@ -107,6 +171,11 @@ export const projects: Project[] = [
     category: 'frontend',
     techStack: ['HTML', 'CSS', 'JavaScript'],
     link: 'https://syedhamza6448.github.io/VCard-Portfolio',
+    screenshots: [
+      potfolioV2About, potfolioV2Contact
+    ],
+    fonts: ['Poppins'],
+    github: 'https://github.com/syedhamza6448/VCard-Portfolio'
   },
   {
     id: 5,
@@ -117,6 +186,11 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['Blade Template Engine(HTML, CSS, JS)', 'Laravel(PHP)', 'Bootstrap', 'MySQL', 'REST APIs'],
     link: null,
+    screenshots: [
+      expenseVoyageHero, expenseVoyageAdminDashboard, expenseVoyageFooter
+    ],
+    favicon: expenseVoyageFav,
+    fonts: ['Jost']
   },
   {
     id: 6,
@@ -127,6 +201,11 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['Blade Template Engine(HTML, CSS, JS)', 'Laravel(PHP)', 'Bootstrap', 'MySQL', 'REST APIs'],
     link: null,
+    screenshots: [
+      eventSphereHero, eventSphereFAQ, eventSphereEventsPage, eventSphereDashboard
+    ],
+    favicon: eventSphereFav,
+    fonts: ['Space Grotesk', 'Figtree']
   },
   {
     id: 7,
@@ -137,6 +216,11 @@ export const projects: Project[] = [
     category: 'frontend',
     techStack: ['React', 'Tailwind CSS'],
     link: 'https://wellnex-eight.vercel.app',
+    screenshots: [
+      wellnexHeroLight, wellnexHero
+    ],
+    fonts: ['Inter'],
+    github: 'https://github.com/syedhamza6448/Wellnex'
   },
   {
     id: 8,
@@ -147,6 +231,10 @@ export const projects: Project[] = [
     category: 'mini-projects',
     techStack: ['HTML', 'CSS', 'API Integration'],
     link: 'https://syedhamza6448.github.io/Weather-App',
+    screenshots: [
+      weatherWidget
+    ],
+    github: 'https://github.com/syedhamza6448/Weather-App'
   },
   {
     id: 9,
@@ -157,6 +245,10 @@ export const projects: Project[] = [
     category: 'mini-projects',
     techStack: ['HTML', 'CSS', 'JavaScript'],
     link: 'https://syedhamza6448.github.io/Zoro-Gallery',
+    screenshots: [
+      zoroGallery
+    ],
+    github: 'https://github.com/syedhamza6448/Zoro-Gallery'
   },
   {
     id: 10,
@@ -167,6 +259,10 @@ export const projects: Project[] = [
     category: 'mini-projects',
     techStack: ['HTML', 'CSS'],
     link: 'https://syedhamza6448.github.io/Clones/Instagram/source%20files/index.html',
+    screenshots: [
+      instaClone
+    ],
+    github: 'https://github.com/syedhamza6448/Clones'
   },
   {
     id: 11,
@@ -177,6 +273,10 @@ export const projects: Project[] = [
     category: 'mini-projects',
     techStack: ['HTML', 'CSS'],
     link: 'https://syedhamza6448.github.io/Clones/Steam/source%20files/index.html',
+    github: 'https://github.com/syedhamza6448/Clones',
+    screenshots: [
+      steamClone
+    ]
   },
   {
     id: 12,
@@ -187,6 +287,10 @@ export const projects: Project[] = [
     category: 'mini-projects',
     techStack: ['HTML', 'CSS'],
     link: 'https://syedhamza6448.github.io/Clones/Netflix/source%20file/netflix.html',
+    screenshots: [
+      netflixClone
+    ],
+    github: 'https://github.com/syedhamza6448/Clones'
   },
   {
     id: 13,
@@ -197,6 +301,10 @@ export const projects: Project[] = [
     category: 'frontend',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
     link: 'https://syedhamza6448.github.io/Portfolio',
+    github: 'https://github.com/syedhamza6448/Portfolio',
+    screenshots: [
+      potfolioV1Hero, potfolioV1Service
+    ]
   },
 ];
 

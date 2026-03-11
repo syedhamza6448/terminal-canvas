@@ -47,6 +47,8 @@ export const projects: Project[] = [
     category: 'full-stack',
     techStack: ['ASP.NET Core', 'C#', 'Tailwind CSS', 'MS SQL Server', 'Chart.js', 'Javascript', 'GSAP', 'Razor Views(.cshtml)'],
     link: null,
+    featured: true,
+    screenshots: []
   },
   {
     id: 14,
@@ -64,7 +66,7 @@ export const projects: Project[] = [
     name: 'Subway Surfers (Fan Tribute)',
     description: 'A nostalgic Subway Surfers fan tribute that brings childhood memories to life with playful motion and game UI.',
     date: '01-2026',
-    status: 'in-progress',
+    status: 'completed',
     category: 'frontend',
     techStack: ['React', 'TypeScript', 'Tailwind CSS'],
     link: 'https://subway-surfer-tribute.vercel.app',

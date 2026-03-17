@@ -48,6 +48,14 @@ import synscriptFav from '/public/img/projects/synscript/icon.png'
 // Wellnex
 import wellnexHero from '/public/img/projects/wellnex/wellnexHero.png'
 import wellnexHeroLight from '/public/img/projects/wellnex/wellnexHeroLight.png'
+// FinTrack
+import fintrackDashboard from '/public/img/projects/fintrack/fintrackDashboard.png'
+import fintrackDashboardTwo from '/public/img/projects/fintrack/fintrackDashboardTwo.png'
+import fintrackDashboardLight from '/public/img/projects/fintrack/fintrackDashboardLight.png'
+import fintrackHero from '/public/img/projects/fintrack/fintrackHero.png'
+import fintrackAI from '/public/img/projects/fintrack/fintrackAI.png'
+import fintrackTxs from '/public/img/projects/fintrack/fintrackTxs.png'
+import fintrackFav from '/public/img/projects/fintrack/faviconFintrack.png'
 
 export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
@@ -70,36 +78,22 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // {
-  //   id: 99,
-  //   name: 'NexaFlow',
-  //   description: 'NexaFlow is a full-stack project management platform with real-time collaboration, Kanban boards, Gantt charts, and AI-powered task prioritization. Built for teams that move fast and need clarity across sprints, milestones, and deliverables.',
-  //   date: '02-2026',
-  //   status: 'completed',
-  //   category: 'full-stack',
-  //   techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Redis', 'Socket.io', 'Prisma', 'Zod'],
-  //   link: 'https://nexaflow-demo.vercel.app',
-  //   github: 'https://github.com/demo/nexaflow',
-  //   favicon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-  //   screenshots: [
-  //     'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
-  //     'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-  //     'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
-  //   ],
-  //   fonts: ['JetBrains Mono', 'Inter', 'Space Grotesk'],
-  //   featured: true,
-  // },
   {
     id: 15,
     name: 'FinTrack',
-    description: 'FinTrack is a personal finance dashboard web application that helps users manage their finances comprehensively. It allows users to track expenses, manage budgets, maintain an investment portfolio, handle debt management, set and monitor savings goals, view financial reports, and access educational resources.',
-    date: '02-2026',
-    status: 'in-progress',
+    description: 'FinTrack is a full-stack AI-powered personal finance dashboard built with Angular 17 and ASP.NET Core 8. It lets users track income and expenses, set monthly budgets with real-time progress bars, manage savings goals, monitor investment portfolios, track debts with compound interest projections, and generate financial reports. Includes an AI layer — floating chat assistant, natural language transaction entry, smart budget notifications, and monthly AI-written financial analysis.',
+    date: '03-2026',
+    status: 'completed',
     category: 'full-stack',
-    techStack: ['ASP.NET Core', 'C#', 'Tailwind CSS', 'MS SQL Server', 'Chart.js', 'Javascript', 'GSAP', 'Razor Views(.cshtml)'],
+    techStack: ['Angular 17', 'TypeScript', 'ASP.NET Core 8', 'C#', 'Entity Framework Core', 'MS SQL Server', 'JWT', 'Chart.js', 'SCSS', 'OpenRouter AI'],
     link: null,
     github: 'https://github.com/syedhamza6448/FinTrack',
     featured: true,
+    fonts: ['Syne', 'DM Sans'],
+    screenshots: [
+      fintrackDashboard, fintrackDashboardTwo, fintrackDashboardLight, fintrackHero, fintrackTxs, fintrackAI
+    ],
+    favicon: fintrackFav
   },
   {
     id: 14,

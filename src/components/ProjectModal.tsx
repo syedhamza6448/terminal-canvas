@@ -13,9 +13,29 @@ interface ProjectModalProps {
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange }) => {
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
 
+  // Build CSS custom properties from project colors
+  const colorStyle = useMemo(() => {
+    if (!project?.colors) return {};
+    return {
+      '--modal-primary': project.colors.primary,
+      '--modal-secondary': project.colors.secondary || project.colors.primary,
+      '--modal-accent': project.colors.accent || project.colors.primary,
+    } as React.CSSProperties;
+  }, [project?.colors]);
+
   if (!project) return null;
 
+  const hasColors = !!project.colors;
   const hasScreenshots = project.screenshots && project.screenshots.length > 0;
+
+  // Dynamic color classes
+  const primaryText = hasColors ? 'text-[hsl(var(--modal-primary))]' : 'text-accent';
+  const primaryBg = hasColors ? 'bg-[hsl(var(--modal-primary))]' : 'bg-accent';
+  const primaryFg = hasColors ? 'text-white' : 'text-accent-foreground';
+  const primaryBorder = hasColors ? 'border-[hsl(var(--modal-primary)/0.2)]' : 'border-accent/20';
+  const techBg = hasColors ? 'bg-[hsl(var(--modal-primary)/0.1)]' : 'bg-accent/10';
+  const techBorder = hasColors ? 'border-[hsl(var(--modal-primary)/0.2)]' : 'border-accent/20';
+  const dotActive = hasColors ? 'bg-[hsl(var(--modal-primary))]' : 'bg-accent';
 
   const nextScreenshot = () => {
     if (hasScreenshots) {
@@ -31,7 +51,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto glass-card border-accent/20 p-0">
+      <DialogContent
+        className={`max-w-2xl max-h-[85vh] overflow-y-auto glass-card ${primaryBorder} p-0`}
+        style={colorStyle}
+      >
         <DialogTitle className="sr-only">{project.name}</DialogTitle>
         {/* Header */}
         <div className="p-6 pb-0">
@@ -45,7 +68,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
                 />
               )}
               <div>
-                <h3 className="font-heading text-2xl font-bold text-foreground">{project.name}</h3>
+                <h3 className={`font-heading text-2xl font-bold ${hasColors ? primaryText : 'text-foreground'}`}>{project.name}</h3>
                 <span className="text-xs font-mono text-muted-foreground">{project.date}</span>
               </div>
             </div>
@@ -55,13 +78,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
         {/* Screenshots Carousel */}
         {hasScreenshots && (
           <div className="px-6 pt-4">
-            <div className="relative rounded-lg overflow-hidden border border-border bg-background">
+            <div className={`relative rounded-lg overflow-hidden border border-border bg-background`}>
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentScreenshot}
                   src={project.screenshots![currentScreenshot]}
                   alt={`${project.name} screenshot ${currentScreenshot + 1}`}
-                  className="w-full h-48 object-cover"
+                  className="w-full object-contain max-h-[400px]"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -89,7 +112,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
                       <button
                         key={i}
                         onClick={() => setCurrentScreenshot(i)}
-                        className={`w-2 h-2 rounded-full transition-colors ${i === currentScreenshot ? 'bg-accent' : 'bg-muted-foreground/50'}`}
+                        className={`w-2 h-2 rounded-full transition-colors ${i === currentScreenshot ? dotActive : 'bg-muted-foreground/50'}`}
                         aria-label={`Go to screenshot ${i + 1}`}
                       />
                     ))}
@@ -108,13 +131,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
         {/* Tech Stack */}
         <div className="px-6 pt-4">
           <h4 className="text-xs font-mono text-muted-foreground mb-2">
-            <span className="text-accent">$</span> tech_stack
+            <span className={primaryText}>$</span> tech_stack
           </h4>
           <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-1 text-xs font-mono bg-accent/10 text-accent rounded border border-accent/20"
+                className={`px-2 py-1 text-xs font-mono ${techBg} ${primaryText} rounded border ${techBorder}`}
               >
                 {tech}
               </span>
@@ -126,7 +149,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
         {project.fonts && project.fonts.length > 0 && (
           <div className="px-6 pt-4">
             <h4 className="text-xs font-mono text-muted-foreground mb-2">
-              <span className="text-accent">$</span> fonts
+              <span className={primaryText}>$</span> fonts
             </h4>
             <div className="flex flex-wrap gap-2">
               {project.fonts.map((font) => (
@@ -148,7 +171,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono bg-accent text-accent-foreground rounded-lg hover:opacity-90 transition-opacity"
+              className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-mono ${primaryBg} ${primaryFg} rounded-lg hover:opacity-90 transition-opacity`}
             >
               <ExternalLink className="w-4 h-4" />
               Live Demo

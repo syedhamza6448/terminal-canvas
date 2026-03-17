@@ -102,9 +102,9 @@ export const projects: Project[] = [
     ],
     favicon: fintrackFav,
     colors: {
-      primary: '217 91% 60%',      // blue
-      secondary: '199 89% 48%',    // cyan
-      accent: '45 93% 47%',        // gold
+      primary: '#0f172a',    // dark navy background
+      secondary: '#3b82f6',  // blue for buttons/highlights
+      accent: '#f59e0b',     // gold for text
     }
   },
   {

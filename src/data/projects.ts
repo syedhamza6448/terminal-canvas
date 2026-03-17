@@ -60,6 +60,12 @@ import fintrackFav from '/public/img/projects/fintrack/faviconFintrack.png'
 export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
 
+export interface ProjectColors {
+  primary: string;    // HSL string e.g. "142 70% 45%"
+  secondary?: string; // HSL string
+  accent?: string;    // HSL string
+}
+
 export interface Project {
   id: number;
   name: string;
@@ -75,6 +81,7 @@ export interface Project {
   fonts?: string[];
   featured?: boolean;
   modalEnabled?: boolean; // defaults to true
+  colors?: ProjectColors; // optional per-project color theming
 }
 
 export const projects: Project[] = [

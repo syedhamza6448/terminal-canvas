@@ -102,9 +102,9 @@ export const projects: Project[] = [
     ],
     favicon: fintrackFav,
     colors: {
-      primary: '#0f172a',    // dark navy background
-      secondary: '#3b82f6',  // blue for buttons/highlights
-      accent: '#f59e0b',     // gold for text
+      primary: '#0C1A2B',    // dark navy background
+      secondary: '#B6FF3B',  // blue for buttons/highlights
+      accent: '#B6FF3B',     // gold for text
     }
   },
   {
@@ -121,7 +121,12 @@ export const projects: Project[] = [
       synscriptHero, synscriptDarkHero, synscriptDashboard, synscriptNoti, synscriptVault
     ],
     github: 'https://github.com/syedhamza6448/SynScript',
-    fonts: ['DM Mono', 'Space Grotesk']
+    fonts: ['DM Mono', 'Space Grotesk'],
+    colors: {
+      primary: '#FAFAFA',
+      secondary: '#FFEB3B',
+      accent: '#00BCD4'
+    }
   },
   {
     id: 1,
@@ -137,7 +142,12 @@ export const projects: Project[] = [
     ],
     link: 'https://subway-surfer-tribute.vercel.app',
     github: 'https://github.com/syedhamza6448/subway-run-tribute',
-    fonts: ['Titan One', 'Lato']
+    fonts: ['Titan One', 'Lato'],
+    colors: {
+      primary: '#314582',
+      secondary: '#2C9D21',
+      accent: '#F9941F'
+    }
   },
   {
     id: 2,
@@ -152,7 +162,12 @@ export const projects: Project[] = [
     screenshots: [
       inquizzitiveHeroDark, inquizzitiveHero, inquizzitiveBrowseQuiz, inquizzitiveProfile, inquizzitiveQuizResult, inquizzitiveSidebar
     ],
-    fonts: ['Outfit']
+    fonts: ['Outfit'],
+    colors: {
+      primary: '#1F1F1F',
+      secondary: '#00C896',
+      accent: '#FFFFFF'
+    }
   },
   {
     id: 3,
@@ -166,7 +181,12 @@ export const projects: Project[] = [
     screenshots: [
       cyberPortfolio
     ],
-    fonts: ['Nexa', 'Subject Zero Display']
+    fonts: ['Nexa', 'Subject Zero Display'],
+    colors: {
+      primary: '#051B39',
+      secondary: '#FFFFFF',
+      accent: '#00C896'
+    }
   },
   {
     id: 4,
@@ -181,7 +201,12 @@ export const projects: Project[] = [
       potfolioV2About, potfolioV2Contact
     ],
     fonts: ['Poppins'],
-    github: 'https://github.com/syedhamza6448/VCard-Portfolio'
+    github: 'https://github.com/syedhamza6448/VCard-Portfolio',
+    colors: {
+      primary: '#1E1E1F',
+      secondary: '#FFDB70',
+      accent: '#F7F7F7'
+    }
   },
   {
     id: 5,
@@ -196,7 +221,12 @@ export const projects: Project[] = [
       expenseVoyageHero, expenseVoyageAdminDashboard, expenseVoyageFooter
     ],
     favicon: expenseVoyageFav,
-    fonts: ['Jost']
+    fonts: ['Jost'],
+    colors: {
+      primary: '#FFFFFF',
+      secondary: '#37D4D9',
+      accent: '#EC6018'
+    }
   },
   {
     id: 6,
@@ -211,7 +241,12 @@ export const projects: Project[] = [
       eventSphereHero, eventSphereFAQ, eventSphereEventsPage, eventSphereDashboard
     ],
     favicon: eventSphereFav,
-    fonts: ['Space Grotesk', 'Figtree']
+    fonts: ['Space Grotesk', 'Figtree'],
+    colors: {
+      primary: '#2F6AFA',
+      secondary: '#FF2A00',
+      accent: '#FFFFFF'
+    }
   },
   {
     id: 7,
@@ -226,7 +261,12 @@ export const projects: Project[] = [
       wellnexHeroLight, wellnexHero
     ],
     fonts: ['Inter'],
-    github: 'https://github.com/syedhamza6448/Wellnex'
+    github: 'https://github.com/syedhamza6448/Wellnex',
+    colors: {
+      primary: '#181028',
+      secondary: '#9A5AF3',
+      accent: '#EFEDF7'
+    }
   },
   {
     id: 8,
@@ -310,7 +350,12 @@ export const projects: Project[] = [
     github: 'https://github.com/syedhamza6448/Portfolio',
     screenshots: [
       potfolioV1Hero, potfolioV1Service
-    ]
+    ],
+    colors: {
+      primary: '#FFD9AB',
+      secondary: '#4E342E',
+      accent: '#A49083'
+    }
   },
 ];
 

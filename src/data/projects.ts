@@ -61,9 +61,9 @@ export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
 
 export interface ProjectColors {
-  primary: string;    // HSL string e.g. "142 70% 45%"
-  secondary?: string; // HSL string
-  accent?: string;    // HSL string
+  primary: string;    // HEX string for modal background e.g. "#1a1a2e"
+  secondary?: string; // HEX string for buttons/highlights
+  accent?: string;    // HEX string for text
 }
 
 export interface Project {

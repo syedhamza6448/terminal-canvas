@@ -100,7 +100,12 @@ export const projects: Project[] = [
     screenshots: [
       fintrackDashboard, fintrackDashboardTwo, fintrackDashboardLight, fintrackHero, fintrackTxs, fintrackAI
     ],
-    favicon: fintrackFav
+    favicon: fintrackFav,
+    colors: {
+      primary: '217 91% 60%',      // blue
+      secondary: '199 89% 48%',    // cyan
+      accent: '45 93% 47%',        // gold
+    }
   },
   {
     id: 14,

@@ -61,9 +61,9 @@ export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
 
 export interface ProjectColors {
-  primary: string;    // HSL string e.g. "142 70% 45%"
-  secondary?: string; // HSL string
-  accent?: string;    // HSL string
+  primary: string;    // HEX string for modal background e.g. "#1a1a2e"
+  secondary?: string; // HEX string for buttons/highlights
+  accent?: string;    // HEX string for text
 }
 
 export interface Project {
@@ -102,9 +102,9 @@ export const projects: Project[] = [
     ],
     favicon: fintrackFav,
     colors: {
-      primary: '217 91% 60%',      // blue
-      secondary: '199 89% 48%',    // cyan
-      accent: '45 93% 47%',        // gold
+      primary: '#0f172a',    // dark navy background
+      secondary: '#3b82f6',  // blue for buttons/highlights
+      accent: '#f59e0b',     // gold for text
     }
   },
   {

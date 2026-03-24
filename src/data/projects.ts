@@ -61,6 +61,7 @@ import speaklogHero from '/public/img/projects/speaklog/speaklogHero.png'
 import speaklogDashboard from '/public/img/projects/speaklog/speaklogDashboard.png'
 import speaklogRecorder from '/public/img/projects/speaklog/speaklogRecorder.png'
 import speaklogResult from '/public/img/projects/speaklog/speaklogResult.png'
+import speaklogFav from '/public/img/projects/speaklog/speaklogFav.png'
 
 export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
@@ -111,7 +112,8 @@ export const projects: Project[] = [
       primary: '#07090f',
       secondary: '#5eead4',
       accent: '#5eead4',
-    }
+    },
+    favicon: speaklogFav
   },
   {
     id: 15,

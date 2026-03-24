@@ -56,6 +56,11 @@ import fintrackHero from '/public/img/projects/fintrack/fintrackHero.png'
 import fintrackAI from '/public/img/projects/fintrack/fintrackAI.png'
 import fintrackTxs from '/public/img/projects/fintrack/fintrackTxs.png'
 import fintrackFav from '/public/img/projects/fintrack/faviconFintrack.png'
+// SpeakLog
+import speaklogHero from '/public/img/projects/speaklog/speaklogHero.png'
+import speaklogDashboard from '/public/img/projects/speaklog/speaklogDashboard.png'
+import speaklogRecorder from '/public/img/projects/speaklog/speaklogRecorder.png'
+import speaklogResult from '/public/img/projects/speaklog/speaklogResult.png'
 
 export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
@@ -85,6 +90,29 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 16,
+    name: 'SpeakLog',
+    description: 'SpeakLog is an AI-powered voice note app that transforms spoken ideas into structured tasks, summaries, and calendar events in seconds. Built with React and Vite, it features a stunning dark glassmorphism UI with live waveform animation, Groq Whisper transcription, and OpenRouter AI parsing — all running entirely in the browser with no backend.',
+    date: '03-2026',
+    status: 'completed',
+    category: 'frontend',
+    techStack: ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Groq Whisper', 'OpenRouter AI'],
+    link: 'https://speaklog.vercel.app',
+    github: 'https://github.com/syedhamza6448/speaklog',
+    fonts: ['Syne', 'DM Sans'],
+    screenshots: [
+      speaklogHero,
+      speaklogRecorder,
+      speaklogResult,
+      speaklogDashboard,
+    ],
+    colors: {
+      primary: '#07090f',
+      secondary: '#5eead4',
+      accent: '#5eead4',
+    }
+  },
   {
     id: 15,
     name: 'FinTrack',

@@ -64,7 +64,7 @@ import speaklogResult from '/public/img/projects/speaklog/speaklogResult.png'
 import speaklogFav from '/public/img/projects/speaklog/speaklogFav.png'
 
 export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
-export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects';
+export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects' | 'application';
 
 export interface ProjectColors {
   primary: string;    // HEX string for modal background e.g. "#1a1a2e"
@@ -91,6 +91,17 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 17,
+    name: 'Wavly',
+    description: 'Control your PC with hand gestures — move the mouse, trigger shortcuts, and type using a transparent on-screen keyboard. Built with MediaPipe, PyAutoGUI and PyQt6.',
+    date: '04-2026',
+    status: 'in-progress',
+    category: 'application',
+    techStack: ['Python', 'PyAutoGUI', 'MediaPipe', 'PyQt6'],
+    link: null,
+    featured: true,
+  },
   {
     id: 16,
     name: 'SpeakLog',
@@ -125,7 +136,6 @@ export const projects: Project[] = [
     techStack: ['Angular 17', 'TypeScript', 'ASP.NET Core 8', 'C#', 'Entity Framework Core', 'MS SQL Server', 'JWT', 'Chart.js', 'SCSS', 'OpenRouter AI'],
     link: null,
     github: 'https://github.com/syedhamza6448/FinTrack',
-    featured: true,
     fonts: ['Syne', 'DM Sans'],
     screenshots: [
       fintrackDashboard, fintrackDashboardTwo, fintrackDashboardLight, fintrackHero, fintrackTxs, fintrackAI

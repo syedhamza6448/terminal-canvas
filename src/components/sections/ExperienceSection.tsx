@@ -14,7 +14,7 @@ const experiences: Experience[] = [
   {
     id: 1,
     company: 'Mini Solutions',
-    role: 'Senior Full-Stack Engineer',
+    role: 'Full-Stack Developer',
     duration: '12-2024 - Present',
     description: [
       'Built robust frontend and backend architectures.',

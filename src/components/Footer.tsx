@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, Mail, Heart, Coffee, Code, Terminal, Gamepad2, FileCode, Sparkles } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Heart, Coffee, Code, Terminal, Gamepad2, FileCode, FileUser, Sparkles } from 'lucide-react';
 import TerminalGame from './TerminalGame';
 
 const socialLinks = [
@@ -231,6 +231,17 @@ const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
+            <motion.a
+              href="/Hamza_Imran_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 font-mono text-sm text-accent transition-colors hover:border-accent hover:bg-accent/20"
+            >
+              <FileUser className="w-4 h-4" aria-hidden="true" />
+              Download CV
+            </motion.a>
           </motion.nav>
         </div>
 

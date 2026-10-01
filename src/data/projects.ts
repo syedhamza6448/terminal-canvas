@@ -62,9 +62,11 @@ import speaklogDashboard from '/public/img/projects/speaklog/speaklogDashboard.p
 import speaklogRecorder from '/public/img/projects/speaklog/speaklogRecorder.png'
 import speaklogResult from '/public/img/projects/speaklog/speaklogResult.png'
 import speaklogFav from '/public/img/projects/speaklog/speaklogFav.png'
+//GeoSpeak
+import geoSpeakFav from '/public/img/projects/geospeak/geoSpeakFav.png'
 
 export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
-export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects' | 'application';
+export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects' | 'application' | 'ai-powered' | 'mobile';
 
 export interface ProjectColors {
   primary: string;    // HEX string for modal background e.g. "#1a1a2e"
@@ -92,15 +94,44 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 19,
+    name: 'BookHaven',
+    description: 'A premium Flutter bookstore app with a Modern Editorial UI. Browse, search and filter books, manage a cart and wishlist, place orders with delivery tracking, and leave reviews, plus an admin panel for managing books, users and orders. Built with Flutter, Dart and Supabase (auth, Postgres, storage).',
+    date: '10-2026',
+    status: 'in-progress',
+    category: 'mobile',
+    techStack: ['Flutter', 'Dart', 'Supabase'],
+    link: null,
+    fonts: ['Cormorant Garamond', 'DM Sans']
+  },
+  {
+    id: 18,
+    name: 'GeoSpeak',
+    description: 'GeoSpeak uses zero paid APIs. On startup, it processes a parallel corpus via local sentence-transformers, indexes embeddings with FAISS, and runs few-shot prompting via the free Hugging Face Inference API to stream live translations to a brutalist frontend.',
+    date: '08-2026',
+    status: 'completed',
+    category: 'ai-powered',
+    techStack: ['Python', 'RAG', 'Flask'],
+    link: 'https://geospeak-5xsv.onrender.com/',
+    github: 'https://github.com/WANIYAM/wavly2.0',
+    favicon: geoSpeakFav,
+    colors: {
+      primary: '#0B192C',
+      secondary: '#edf4fcc4',
+      accent: '#1774EE',
+    },
+    fonts: ['Pixelify Sans', 'Outfit']
+  },
+  {
     id: 17,
     name: 'Wavly',
     description: 'Control your PC with hand gestures — move the mouse, trigger shortcuts, and type using a transparent on-screen keyboard. Built with MediaPipe, PyAutoGUI and PyQt6.',
     date: '04-2026',
-    status: 'in-progress',
+    status: 'completed',
     category: 'application',
     techStack: ['Python', 'PyAutoGUI', 'MediaPipe', 'PyQt6'],
-    link: null,
-    featured: true,
+    link: 'https://wavly-website.vercel.app/',
+    github: 'https://github.com/WANIYAM/wavly2.0'
   },
   {
     id: 16,
@@ -108,7 +139,7 @@ export const projects: Project[] = [
     description: 'SpeakLog is an AI-powered voice note app that transforms spoken ideas into structured tasks, summaries, and calendar events in seconds. Built with React and Vite, it features a stunning dark glassmorphism UI with live waveform animation, Groq Whisper transcription, and OpenRouter AI parsing — all running entirely in the browser with no backend.',
     date: '03-2026',
     status: 'completed',
-    category: 'frontend',
+    category: 'ai-powered',
     techStack: ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Groq Whisper', 'OpenRouter AI'],
     link: 'https://speaklog.vercel.app',
     github: 'https://github.com/syedhamza6448/speaklog',
@@ -197,8 +228,7 @@ export const projects: Project[] = [
     status: 'completed',
     category: 'full-stack',
     techStack: ['Blade Template Engine(HTML, CSS, JS)', 'Laravel(PHP)', 'MySQL', 'REST APIs'],
-    link: 'https://www.inquizzitive.io',
-    favicon: 'https://inquizzitive.io/assets/images/Inquizzitive_logo_darkmode.png',
+    link: null,
     screenshots: [
       inquizzitiveHeroDark, inquizzitiveHero, inquizzitiveBrowseQuiz, inquizzitiveProfile, inquizzitiveQuizResult, inquizzitiveSidebar
     ],

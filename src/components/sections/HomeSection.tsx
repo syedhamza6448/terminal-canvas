@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ChevronDown, ArrowRight, FileUser, MessageSquare } from 'lucide-react';
 import TypingAnimation from '../TypingAnimation';
 import { Slider } from '../ui/slider';
 
@@ -100,10 +100,20 @@ const HomeSection: React.FC = () => {
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </a>
               <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-accent text-accent font-mono rounded-lg hover:bg-accent/10 transition-colors"
+                href="/Hamza_Imran_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open CV in a new tab"
+                className="inline-flex items-center justify-center p-3 border border-accent text-accent rounded-lg hover:bg-accent/10 transition-colors"
               >
-                Get In Touch
+                <FileUser className="w-5 h-5" aria-hidden="true" />
+              </a>
+              <a
+                href="#contact"
+                aria-label="Get in touch"
+                className="inline-flex items-center justify-center p-3 border border-accent text-accent rounded-lg hover:bg-accent/10 transition-colors"
+              >
+                <MessageSquare className="w-5 h-5" aria-hidden="true" />
               </a>
             </motion.nav>
           </motion.header>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Gamepad2, Sparkles, Code2, ShoppingCart } from 'lucide-react';
+import { ArrowRight, Gamepad2, Sparkles, Code2, ShoppingCart, PhoneIcon, Smartphone } from 'lucide-react';
 import PixelAlien from '../PixelAlien';
 import { 
   SiReact, 
@@ -20,15 +20,18 @@ import {
   SiCss3, 
   SiBootstrap, 
   SiWordpress, 
-  SiElementor, 
+  SiElementor,
+  SiFlutter,
+  SiDart, 
+  SiFirebase,
+  SiSupabase, 
 } from 'react-icons/si';
 import { Code, Palette, Server, Zap, Database, Plug2 } from 'lucide-react';
 
-type AboutTab = 'alien' | 'stats' | 'fun-facts';
+type AboutTab = 'alien' | 'fun-facts';
 
 const tabIcons: { id: AboutTab; icon: React.ElementType; label: string }[] = [
   { id: 'alien', icon: Gamepad2, label: 'Alien' },
-  { id: 'stats', icon: Code2, label: 'Stats' },
   { id: 'fun-facts', icon: Sparkles, label: 'Facts' },
 ];
 
@@ -36,9 +39,8 @@ const funFacts = [
   { emoji: '☕', fact: 'Coffee consumed', value: '1000+', unit: 'cups' },
   { emoji: '💻', fact: 'Lines of code', value: '500K+', unit: 'lines' },
   { emoji: '🐛', fact: 'Bugs squashed', value: '∞', unit: 'bugs' },
-  { emoji: '🎮', fact: 'Gaming hours', value: '2000+', unit: 'hours' },
   { emoji: '📚', fact: 'Docs read', value: '999+', unit: 'pages' },
-  { emoji: '🚀', fact: 'Projects deployed', value: '50+', unit: 'apps' },
+  { emoji: '🚀', fact: 'Projects deployed', value: '25+', unit: 'apps' },
 ];
 
 const codingStats = [
@@ -56,6 +58,10 @@ const techStacks = [
   { name: 'Tailwind CSS', category: 'frontend', icon: SiTailwindcss },
   { name: 'Bootstrap', category: 'frontend', icon: SiBootstrap },
   { name: 'Node.js', category: 'backend', icon: SiNodedotjs },
+  { name: 'Flutter', category: 'mobile', icon: SiFlutter },
+  { name: 'Dart', category: 'mobile', icon: SiDart },
+  { name: 'Firebase', category: 'backend', icon: SiFirebase },
+  { name: 'Supabase', category: 'backend', icon: SiSupabase },
   { name: 'Laravel', category: 'backend', icon: SiLaravel },
   { name: 'ASP.NET Core', category: 'backend', icon: SiDotnet },
   { name: 'MySQL', category: 'database', icon: SiMysql },
@@ -126,6 +132,13 @@ const services: Service[] = [
     description: 'Building fast, secure, and easy-to-manage WordPress websites tailored to your needs.',
     icon: SiWordpress,
     features: ['Wordpress', 'Elementor', 'Ecommerce'],
+  },
+  {
+    id: 8,
+    title: 'Mobile App Development',
+    description: 'Building fast, secure, and easy-to-manage WordPress websites tailored to your needs.',
+    icon: Smartphone,
+    features: ['Flutter', 'Firebase/Supabase', 'Dart'],
   },
 ];
 
@@ -235,7 +248,7 @@ const AboutSection: React.FC = () => {
               <div className="p-6 bg-terminal scanlines relative h-[300px] md:h-[350px] overflow-hidden">
                 {activeTab === 'alien' && <PixelAlien />}
                 
-                {activeTab === 'stats' && (
+                {/* {activeTab === 'stats' && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -268,7 +281,7 @@ const AboutSection: React.FC = () => {
                       </motion.div>
                     ))}
                   </motion.div>
-                )}
+                )} */}
                 
                 {activeTab === 'fun-facts' && (
                   <motion.div

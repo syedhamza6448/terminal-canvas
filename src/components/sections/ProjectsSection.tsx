@@ -18,6 +18,8 @@ const categoryFilters: { value: ProjectCategory | 'all'; label: string }[] = [
   { value: 'frontend', label: 'Frontend' },
   { value: 'mini-projects', label: 'Mini Projects' },
   { value: 'application', label: 'Application' },
+  { value: 'mobile', label: 'Mobile' },
+  { value: 'ai-powered', label: 'AI-Powered' },
 ];
 
 const getStatusClass = (status: ProjectStatus) => {
@@ -42,6 +44,8 @@ const getCategoryText = (category: ProjectCategory) => {
     case 'frontend': return 'Frontend';
     case 'mini-projects': return 'Mini Project';
     case 'application': return 'Application';
+    case 'mobile': return 'Mobile';
+    case 'ai-powered': return 'AI-Powered';
   }
 };
 

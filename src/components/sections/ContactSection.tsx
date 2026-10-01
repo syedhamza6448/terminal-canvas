@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Github, Linkedin, Instagram, Mail, ArrowUpRight, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, Github, Linkedin, Instagram, Mail, FileUser, ArrowUpRight, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
@@ -36,6 +36,12 @@ const socialLinks: SocialLink[] = [
     username: 'hsyed6448@gmail.com',
     icon: Mail,
     href: 'mailto:hsyed6448@gmail.com',
+  },
+  {
+    name: 'CV',
+    username: 'Download CV',
+    icon: FileUser,
+    href: '/Hamza_Imran_Resume.pdf',
   },
 ];
 

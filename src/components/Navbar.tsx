@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, ChevronDown, Terminal, Menu, X } from 'lucide-react';
+import { Moon, Sun, ChevronDown, Terminal, Menu, X, FileUser } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface NavLink {
   name: string;
@@ -155,6 +156,23 @@ const Navbar: React.FC = () => {
 
             {/* Right Controls */}
             <div className="flex items-center gap-3">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <motion.a
+                    href="/Hamza_Imran_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg hover:bg-secondary transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label="Download CV"
+                  >
+                    <FileUser className="w-5 h-5 text-accent" aria-hidden="true" />
+                  </motion.a>
+                </TooltipTrigger>
+                <TooltipContent>Download CV</TooltipContent>
+              </Tooltip>
+
               {/* Theme Toggle */}
               <motion.button
                 onClick={toggleTheme}

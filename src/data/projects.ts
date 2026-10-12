@@ -63,7 +63,7 @@ import speaklogRecorder from '@/assets/projects/speaklog/speaklogRecorder.png'
 import speaklogResult from '@/assets/projects/speaklog/speaklogResult.png'
 import speaklogFav from '@/assets/projects/speaklog/speaklogFav.png'
 //GeoSpeak
-import geoSpeakFav from '@/assets/projects/geospeak/geoSpeakFav.png'
+import geoSpeakFav from '@/assets/projects/geoSpeak/geoSpeakFav.png'
 // BookHaven
 import bookHavenFav from '@/assets/projects/bookHaven/bookHavenFav.png'
 import bookHavenHome from '@/assets/projects/bookHaven/home.jpeg'

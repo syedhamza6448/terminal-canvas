@@ -120,6 +120,7 @@ export const projects: Project[] = [
       bookHavenWishlist,
       bookHavenBookDetails,
     ],
+    featured: true,
   },
   {
     id: 18,

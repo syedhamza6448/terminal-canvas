@@ -64,6 +64,11 @@ import speaklogResult from '/public/img/projects/speaklog/speaklogResult.png'
 import speaklogFav from '/public/img/projects/speaklog/speaklogFav.png'
 //GeoSpeak
 import geoSpeakFav from '/public/img/projects/geospeak/geoSpeakFav.png'
+// BookHaven
+import bookHavenFav from '/public/img/projects/bookHaven/bookHavenFav.png'
+import bookHavenHome from '/public/img/projects/bookHaven/home.jpeg'
+import bookHavenWishlist from '/public/img/projects/bookHaven/wishlist.jpeg'
+import bookHavenBookDetails from '/public/img/projects/bookHaven/book_details.jpeg'
 
 export type ProjectStatus = 'completed' | 'in-progress' | 'archived';
 export type ProjectCategory = 'full-stack' | 'frontend' | 'mini-projects' | 'application' | 'ai-powered' | 'mobile';
@@ -95,14 +100,26 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 19,
-    name: 'BookHaven',
+    name: 'Book Haven',
     description: 'A premium Flutter bookstore app with a Modern Editorial UI. Browse, search and filter books, manage a cart and wishlist, place orders with delivery tracking, and leave reviews, plus an admin panel for managing books, users and orders. Built with Flutter, Dart and Supabase (auth, Postgres, storage).',
     date: '10-2026',
-    status: 'in-progress',
+    status: 'completed',
     category: 'mobile',
     techStack: ['Flutter', 'Dart', 'Supabase'],
-    link: null,
-    fonts: ['Cormorant Garamond', 'DM Sans']
+    link: 'https://github.com/syedhamza6448/bookHaven/releases/tag/v1.0.0',
+    fonts: ['Cormorant Garamond', 'DM Sans'],
+    colors: {
+      primary: '#121714',
+      secondary: '#3F7A6B',
+      accent: '#D4A95A',
+    },
+    favicon: bookHavenFav,
+    github: 'https://github.com/syedhamza6448/bookHaven',
+    screenshots: [
+      bookHavenHome,
+      bookHavenWishlist,
+      bookHavenBookDetails,
+    ],
   },
   {
     id: 18,

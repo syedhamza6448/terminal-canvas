@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, XCircle, Github, LayoutGrid, List, Star } from 'lucide-react';
+import { ExternalLink, XCircle, Github, LayoutGrid, List, Star, FileDown } from 'lucide-react';
 import TestimonialsSection from './TestimonialsSection';
 import ProjectModal from '@/components/ProjectModal';
 import { projects, sortProjectsByDate, type Project, type ProjectStatus, type ProjectCategory } from '@/data/projects';
@@ -64,9 +64,8 @@ const ProjectCard: React.FC<{
       transition={{ duration: 0.4, delay: index * 0.05 }}
       whileHover={{ y: -5 }}
       onClick={onClick}
-      className={`glass-card p-6 h-full flex flex-col cursor-pointer transition-all duration-300 hover:border-accent/40 ${
-        isFeatured ? 'md:col-span-2 border-accent/30 ring-1 ring-accent/10' : ''
-      }`}
+      className={`glass-card p-6 h-full flex flex-col cursor-pointer transition-all duration-300 hover:border-accent/40 ${isFeatured ? 'md:col-span-2 border-accent/30 ring-1 ring-accent/10' : ''
+        }`}
     >
       {/* Featured badge */}
       {isFeatured && (
@@ -123,8 +122,17 @@ const ProjectCard: React.FC<{
             onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-2 text-accent text-sm font-mono hover:underline group"
           >
-            <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            <span>Live</span>
+            {project.category === 'mobile' ? (
+              <>
+              <FileDown className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"/>
+              <span>Download APK</span>
+              </>
+              ) : (
+              <>
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <span>Live</span>
+              </>
+            )}
           </a>
         ) : (
           <div className="inline-flex items-center gap-2 text-muted-foreground text-sm font-mono">
@@ -202,11 +210,10 @@ const FilterButton: React.FC<{
     onClick={onClick}
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
-    className={`px-4 py-2 text-sm font-mono rounded-lg transition-all duration-300 border ${
-      active
-        ? 'bg-accent text-accent-foreground border-accent'
-        : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
-    }`}
+    className={`px-4 py-2 text-sm font-mono rounded-lg transition-all duration-300 border ${active
+      ? 'bg-accent text-accent-foreground border-accent'
+      : 'bg-transparent text-muted-foreground border-border hover:border-accent/50 hover:text-foreground'
+      }`}
   >
     {children}
   </motion.button>

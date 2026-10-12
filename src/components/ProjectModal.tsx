@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight, FileDown } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import type { Project } from '@/data/projects';
 
@@ -196,8 +196,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
               className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-mono rounded-lg hover:opacity-90 transition-opacity ${!hasColors ? 'bg-accent text-accent-foreground' : ''}`}
               style={secondaryBg}
             >
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
+              {project.category === 'mobile' ? (
+                <>
+                  <FileDown className='w-4 h-4' />
+                  Download APK
+                </>
+              ) : (
+                <>
+                  < ExternalLink className="w-4 h-4" />
+                  Live Demo
+                </>)}
             </a>
           )}
           {project.github && (

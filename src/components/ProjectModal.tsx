@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ChevronLeft, ChevronRight, FileDown } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight, FileDown, Info } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import type { Project } from '@/data/projects';
 
@@ -12,6 +12,8 @@ interface ProjectModalProps {
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange }) => {
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
+  const [currentMobileFrame, setCurrentMobileFrame] = useState(0);
+  const [mobileFrameDirection, setMobileFrameDirection] = useState(1);
 
   if (!project) return null;
 
@@ -22,6 +24,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
   const accent = c?.accent || c?.secondary || c?.primary; // text
 
   const hasScreenshots = project.screenshots && project.screenshots.length > 0;
+  const mobileFrameCount = hasScreenshots ? Math.ceil(project.screenshots!.length / 4) : 0;
+  const activeMobileFrame = Math.min(currentMobileFrame, mobileFrameCount - 1);
 
   const nextScreenshot = () => {
     if (hasScreenshots) {
@@ -90,51 +94,111 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
         {/* Screenshots Carousel */}
         {hasScreenshots && (
           <div className="px-6 pt-4">
-            <div className="relative rounded-lg overflow-hidden border border-border bg-black/20">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentScreenshot}
-                  src={project.screenshots![currentScreenshot]}
-                  alt={`${project.name} screenshot ${currentScreenshot + 1}`}
-                  className="w-full object-contain max-h-[400px]"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.2 }}
-                />
-              </AnimatePresence>
-              {project.screenshots!.length > 1 && (
-                <>
-                  <button
-                    onClick={prevScreenshot}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-                    style={hasColors ? { backgroundColor: `${secondary}cc`, color: '#fff' } : undefined}
-                    aria-label="Previous screenshot"
+            {project.category === 'mobile' ? (
+              <div className="relative rounded-lg overflow-hidden border border-border bg-black/20">
+                <AnimatePresence mode="wait" custom={mobileFrameDirection}>
+                  <motion.div
+                    key={activeMobileFrame}
+                    custom={mobileFrameDirection}
+                    variants={{
+                      enter: (direction: number) => ({ opacity: 0, x: direction * 40 }),
+                      center: { opacity: 1, x: 0 },
+                      exit: (direction: number) => ({ opacity: 0, x: direction * -40 }),
+                    }}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.2 }}
+                    className="flex items-center justify-center gap-3 p-3"
                   >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={nextScreenshot}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-                    style={hasColors ? { backgroundColor: `${secondary}cc`, color: '#fff' } : undefined}
-                    aria-label="Next screenshot"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
-                    {project.screenshots!.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setCurrentScreenshot(i)}
-                        className={`w-2 h-2 rounded-full transition-colors ${!hasColors ? (i === currentScreenshot ? 'bg-accent' : 'bg-muted-foreground/50') : ''}`}
-                        style={hasColors ? (i === currentScreenshot ? dotActiveStyle : { backgroundColor: `${accent}40` }) : undefined}
-                        aria-label={`Go to screenshot ${i + 1}`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
+                    {project.screenshots!
+                      .slice(activeMobileFrame * 4, activeMobileFrame * 4 + 4)
+                      .map((screenshot, i) => (
+                        <img
+                          key={activeMobileFrame * 4 + i}
+                          src={screenshot}
+                          alt={`${project.name} screenshot ${activeMobileFrame * 4 + i + 1}`}
+                          className="min-w-0 flex-1 w-full max-h-[400px] object-contain"
+                        />
+                      ))}
+                  </motion.div>
+                </AnimatePresence>
+                {mobileFrameCount > 1 && (
+                  <>
+                    <button
+                      onClick={() => {
+                        setMobileFrameDirection(-1);
+                        setCurrentMobileFrame(Math.max(0, activeMobileFrame - 1));
+                      }}
+                      disabled={activeMobileFrame === 0}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-colors disabled:opacity-40"
+                      style={hasColors ? { backgroundColor: `${secondary}cc`, color: '#fff' } : undefined}
+                      aria-label="Previous screenshot frame"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        setMobileFrameDirection(1);
+                        setCurrentMobileFrame(Math.min(mobileFrameCount - 1, activeMobileFrame + 1));
+                      }}
+                      disabled={activeMobileFrame === mobileFrameCount - 1}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-colors disabled:opacity-40"
+                      style={hasColors ? { backgroundColor: `${secondary}cc`, color: '#fff' } : undefined}
+                      aria-label="Next screenshot frame"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </>
+                )}
+              </div>
+            ) : (
+              <div className="relative rounded-lg overflow-hidden border border-border bg-black/20">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentScreenshot}
+                    src={project.screenshots![currentScreenshot]}
+                    alt={`${project.name} screenshot ${currentScreenshot + 1}`}
+                    className="w-full object-contain max-h-[400px]"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </AnimatePresence>
+                {project.screenshots!.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevScreenshot}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                      style={hasColors ? { backgroundColor: `${secondary}cc`, color: '#fff' } : undefined}
+                      aria-label="Previous screenshot"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={nextScreenshot}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                      style={hasColors ? { backgroundColor: `${secondary}cc`, color: '#fff' } : undefined}
+                      aria-label="Next screenshot"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                      {project.screenshots!.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setCurrentScreenshot(i)}
+                          className={`w-2 h-2 rounded-full transition-colors ${!hasColors ? (i === currentScreenshot ? 'bg-accent' : 'bg-muted-foreground/50') : ''}`}
+                          style={hasColors ? (i === currentScreenshot ? dotActiveStyle : { backgroundColor: `${accent}40` }) : undefined}
+                          aria-label={`Go to screenshot ${i + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         )}
 
@@ -183,6 +247,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onOpenChange
                 </span>
               ))}
             </div>
+          </div>
+        )}
+
+        {project.note && (
+          <div className={`px-6 py-4`}>
+            <div className='flex gap-2'>
+              <Info className={`h-4 w-4 ${!hasColors ? 'text-accent' : ''}`} style={accentColor} />
+              <h4 className={`text-xs font-mono mb-2 ${!hasColors ? 'text-muted-foreground' : ''}`} style={dateStyle}>Note:</h4>
+            </div>
+            <p
+              className={`text-xs leading-relaxed ${!hasColors ? 'text-muted-foreground' : ''}`}
+              style={descStyle}
+            >
+              {project.note}
+            </p>
           </div>
         )}
 

@@ -95,6 +95,7 @@ export interface Project {
   featured?: boolean;
   modalEnabled?: boolean; // defaults to true
   colors?: ProjectColors; // optional per-project color theming
+  note?: string;
 }
 
 export const projects: Project[] = [
@@ -121,8 +122,8 @@ export const projects: Project[] = [
       bookHavenBookDetails,
     ],
     featured: true,
+    note: "Payment is simulated (demo only). No real transactions are processed."
   },
-  
   {
     id: 18,
     name: 'GeoSpeak',

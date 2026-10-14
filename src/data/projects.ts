@@ -122,6 +122,7 @@ export const projects: Project[] = [
     ],
     featured: true,
   },
+  
   {
     id: 18,
     name: 'GeoSpeak',
